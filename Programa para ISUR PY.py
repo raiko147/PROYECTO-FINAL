@@ -1,8 +1,8 @@
 #Programa de Organización de Instituto Del Sur.
 #-------------------------Problema--------------------------------
 """
-
-nos pide:
+# saben en la pagina de Intituto de sur, hay mas opciones para nuestro PROGRAMA-----kevin--------
+Nos pide:
 -numeros de alumnos por carrera profesional
 -precio de pensiones de cada carrera profesional
 -precio de matriculas por alumno
