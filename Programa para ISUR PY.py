@@ -47,5 +47,7 @@ def numalum(x):
             a=1
     return na
 
-numalum("matematica")
+numalum("Negocios internacionales")
+numalum("Diseño")
+numalum("Marketin")
 #------------------Aldo(Final)---------------------
