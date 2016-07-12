@@ -14,7 +14,7 @@ nos pide:
 -cantidad de Cursos por semestre
 -cantidad de Creditos por semestre
 -
-Este programa te alla
+Este programa te Halla
 1)Reporte : 
     1.-numero de alumnos(por cada carrera profesional), docentes, administrativos, personal de servicio
     2.-total de pensiones por carrera profesional
