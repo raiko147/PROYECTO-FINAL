@@ -35,7 +35,18 @@ Este programa te alla
 """
 #tambien podemos añadir personas postulantes , egresados, capacitaciones, eventos 
 #-------------------Aldo(Inicio)-------------------
-
+def numalum (x):
+    a=1
+    while a!=0:
+        na=input("Ingrese la cantidad de alumnos de ",x," :" )
+        try:
+            na=abs(int(na))
+            a=0
+            print("Dato valido...")
+        except:
+            print("Error ingrese un dato correcto...")
+            n=1
+return na
 
 
 #------------------Aldo(Final)---------------------
