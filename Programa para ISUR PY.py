@@ -35,18 +35,17 @@ Este programa te alla
 """
 #tambien podemos añadir personas postulantes , egresados, capacitaciones, eventos 
 #-------------------Aldo(Inicio)-------------------
-def numalum (x):
+def numalum(x):
     a=1
     while a!=0:
-        na=input("Ingrese la cantidad de alumnos de ",x," :" )
-        try:
-            na=abs(int(na))
+        na=input("Ingrese la cantidad de alumnos de {0} :".format(x))
+        if na.isdigit():
             a=0
             print("Dato valido...")
-        except:
-            print("Error ingrese un dato correcto...")
-            n=1
-return na
+        else:
+            print("Error ingrese un numero")
+            a=1
+    return na
 
-
+numalum("matematica")
 #------------------Aldo(Final)---------------------
