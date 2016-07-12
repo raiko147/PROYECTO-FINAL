@@ -11,15 +11,20 @@ nos pide:
 -salario de personal de servicio
 -numero de alumnos aprobados
 -numero de alumnos desaprobados
+-cantidad de Cursos por semestre
+-cantidad de Creditos por semestre
+-
 Este programa te alla
 1)Reporte : 
     1.-numero de alumnos(por cada carrera profesional), docentes, administrativos, personal de servicio
     2.-total de pensiones por carrera profesional
-    3.-total de salario de docentes
-    4.-total de salario de administrativos
-    5.-total de salario de personal de servicio
-    6.-monto total recaudado por matriculas
-    7.-monto total recaudado por pagos de abandono
+    3.-cantidad de Cursos por semestre
+    4.-cantidad de Creditos por semestre
+    5.-total de salario de docentes
+    6.-total de salario de administrativos
+    7.-total de salario de personal de servicio
+    8.-monto total recaudado por matriculas
+    9.-monto total recaudado por pagos de abandono
 2) El dato estadistico en porcentaje de alumnos aprobados (su ponderado mayor o igual 11) y desaprobados
 (su ponderado menor a 11) en todo el instituto, Abandonos, Matriculados
 3) Reporte de dinero recaudado por pensiones  de alumnos si:
@@ -32,6 +37,7 @@ Este programa te alla
     -Monto de Gastos(salarios docentes, salarios administrativos, salarios personal de servicio)
     -Monto de ingresos(pensiones, matriculas, monto de abandono)
     total_dinero= monto_dinero_inicial + ingresos - gastos
+6) Reporte de cantid
 """
 #tambien podemos añadir personas postulantes , egresados, capacitaciones, eventos 
 #-------------------Aldo(Inicio)-------------------
