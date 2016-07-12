@@ -59,7 +59,7 @@ numalum("Marketin")
 #------------------Aldo(Final)---------------------
 
 
-#-----------------KEVIN------------
+#-----------------KEVIN-----------------
               INSTITUTO DEL SUR AREQUIPA
                 MENU:
 1.	¿Quiénes Somos?
