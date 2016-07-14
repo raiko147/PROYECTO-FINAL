@@ -7,7 +7,5 @@ a=matriculas("hola")
 print(a.matricula)
 print(matriculas.prints)
 
-print("Prueba de sincronizacion")
-
 
 
