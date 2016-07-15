@@ -1,6 +1,9 @@
 # PROYECTO-FINAL
 Programa de Organización de Instituto Del Sur
 
-Este programa te alla:
+Este programa halla:
 
-organizacion
+Inscripcion de estudiantes
+Matriculas
+Especialidad/Tecnica
+Organizacion

@@ -1,3 +1,6 @@
+---Wilson---
+urgente esta informacion debe estar en el wiki aqui es el espacio de codigo |)
+
 #Programa de Organización de Instituto Del Sur.
 #-------------------------Problema--------------------------------
 """
@@ -14,7 +17,7 @@ Nos pide:
 -cantidad de Cursos por semestre
 -cantidad de Creditos por semestre
 -
-Este programa te Halla
+Este programa Halla
 1)Reporte : 
     1.-numero de alumnos(por cada carrera profesional), docentes, administrativos, personal de servicio
     2.-total de pensiones por carrera profesional
