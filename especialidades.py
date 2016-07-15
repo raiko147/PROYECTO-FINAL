@@ -1,5 +1,6 @@
-class especialidades:
+class especialidadesisur:
     def __init__(self):
+        self.carrerasProfesionales = carrerrasProfesionales
     def carreras():
         carrerasProfesionales = ["Escuela de negocios", "Administración de negocios bancarios y financieros",
                                  "Administración de negocios Internacionales", "Marketing", "Escuela de turismo",
@@ -10,4 +11,4 @@ class especialidades:
                                  "Diseño de prendas de vestir" ]
         return carrerasProfesionales
 
-    def
+
