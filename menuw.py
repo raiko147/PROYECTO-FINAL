@@ -1,4 +1,5 @@
 from modulow import *
+from especialidades import *
 import time
 import sys
 import os
@@ -79,7 +80,7 @@ def inscripcionNueva():
             direccionConcatenado = direccionConcatenado[:-1]
 
         #Ingreso la especilidad que estudiara
-        especialidad = ['Electronica', 'Soldadura']
+        especialidad = especialidadesisur.carreras()
         print('\tEspecialidad que estudiara el estudiante')
         j, opcion = 1, ''
         respuesta = ' '
