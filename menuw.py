@@ -41,7 +41,7 @@ def ingresoAlfanumerico(denominacion, limitemayor, limiteinferior): #funcion de 
                 j+=1
                 Concatenado += i+' '
         if not (len(nombre) == j and j>=limiteinferior and k >= limiteinferior and k <= limitemayor ):
-            print('\tIngrese {} alfabeticos o denominacion aceptable'.format(denominacion))
+            print('\tIngrese {} alfanumericos o denominacion aceptable'.format(denominacion))
         Concatenado = Concatenado[:-1]
     if k == 0:
         return None
@@ -67,6 +67,20 @@ def ingresoNumerico(denominacion,limite):
             print('\tIngrese correctamente aceptable {} dijitos'.format(limite))
     return numero
 
+def ingresoCorreo(denominacion, limitemayor, limiteinferior):
+    correo, j,k,m ="",0,0,0
+    while not (correo in "@" and j == 0 and k>=limitemayor and k>=limiteinferior and m>0):
+        correo = input("Ingrese {}: ".format(denominacion))
+        for i in correo:
+            if i == " ":
+                j+=1
+            elif i==".":
+                m +=1
+            k+=1
+        if not (correo in "@" and j == 0 and k>=limitemayor and k>=limiteinferior and m>0);
+            print("Ingrese un correo valido")
+    return correo
+
 def inscripcionNueva():
     global codigo, b
 
@@ -75,20 +89,7 @@ def inscripcionNueva():
     while not (s.lower() == 'si' or s == 'c'):
 
         print('\tINGRESO DATOS DE ESTUDIANTE')
-'''
-CREATE TABLE registro(
-id integer primary key,
-nombre var(20) not null,
-apellidos var(20) not null,
-edad int(2) not null,
-dni int(8) not null,
-direccion var(30) not null,
-sexo var(1) not null,
-correo var(32) not null,
-especialidad var(60) not null,
-observaciones var(60));
 
-'''
 
     #nombre var (20), apellidos var(20), edad integer(2), dni integer(8), direccion var(30),
     # #sexo,#correo, especialidad, observaciones var(60),
@@ -102,16 +103,13 @@ observaciones var(60));
         #ingreso sexo
         sexo =""
         while not (sexo.lower()=="m" or sexo.lower()=="f"):
-            sexo = ingresoAlfabetico("sexo",1)
+            sexo = ingresoAlfabetico("sexo (M/F)",1)
             sexo = sexo.upper()
             if not (sexo.lower()=="m" or sexo.lower()=="f"):
                 print("Error solo masculino (M) femenino (F)")
-        #iingreso correo
-        correo = ""
-        while not (correo in "@"):
-            correo = ingresoAlfanumerico("correo",32,15)
-            if not (correo in "@"):
-                print("Ingrese un correo valido")
+        #ingreso correo
+        correo = ingresoCorreo("correo",32,5)
+
         #Ingreso la especilidad que estudiara
         especialidad = especialidadesisur.carreras()
         print('\tEspecialidad que estudiara el estudiante')
@@ -221,8 +219,8 @@ def modificar():
             dat = inscripcionNueva()
             print(end="\tActualizando...")
             cursor.execute("update registro set nombre=\"{0}\",apellidos=\"{1}\",edad=\"{2}\",dni=\"{3}\","
-                           "direccion=\"{4}\",especialidad=\"{5}\",observaciones=\"{6}\" where id = \"{7}\""
-                           "".format(dat[0],dat[1],dat[2],dat[3],dat[4],dat[5],dat[6],codigo))
+                           "direccion=\"{4}\",sexo=\"{5}\",correo=\"{6}\",especialidad=\"{7}\",observaciones=\"{8}\" where id = \"{9}\""
+                           "".format(dat[0],dat[1],dat[2],dat[3],dat[4],dat[5],dat[6],dat[7],dat[8],codigo))
             con.commit()
             print("ok\n")
         elif s == "2":
@@ -255,9 +253,9 @@ def menuPrincipal():
             datos = inscripcionNueva()
             if datos :
                 print(end="\tguardando... ")
-                cursor.execute("insert into registro(nombre,apellidos,edad,dni,direccion,especialidad,observaciones) "
-                               "values(\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\")"
-                               "".format(datos[0],datos[1],datos[2],datos[3],datos[4],datos[5],datos[6]))
+                cursor.execute("insert into registro(nombre,apellidos,edad,dni,direccion,sexo,correo,especialidad,observaciones) "
+                               "values(\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\")"
+                               "".format(datos[0],datos[1],datos[2],datos[3],datos[4],datos[5],datos[6],datos[7],datos[8]))
                 con.commit()
                 print("ok")
         #reporte estudiantes
