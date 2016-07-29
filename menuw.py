@@ -77,7 +77,7 @@ def ingresoCorreo(denominacion, limitemayor, limiteinferior):
             elif i==".":
                 m +=1
             k+=1
-        if not (correo in "@" and j == 0 and k>=limitemayor and k>=limiteinferior and m>0);
+        if not (correo in "@" and j == 0 and k>=limitemayor and k>=limiteinferior and m>0):
             print("Ingrese un correo valido")
     return correo
 
