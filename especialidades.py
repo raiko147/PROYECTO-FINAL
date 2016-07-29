@@ -9,6 +9,11 @@ class especialidadesisur:
                                  "Administración y sistemas", "Desarrollo de sistema s de información",
                                  "Escuela de diseño", "Diseño gráfico multimedia", "Diseño y decoración de interiores",
                                  "Diseño de prendas de vestir" ]
-        return carrerasProfesionales
+        return  carrerasProfesionales
+
+    def opciones():
+        opcionesTarea = ["Inscripciones","Reporte Estudiantes","Modificar Datos","Eliminar Registro"]
+        return  opcionesTarea
+
 
 
