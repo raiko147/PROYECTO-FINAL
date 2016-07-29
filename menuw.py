@@ -89,14 +89,15 @@ def inscripcionNueva():
         print('\tEspecialidad que estudiara el estudiante')
         j, opcion = 1, ''
         respuesta = ''
-        while not ((respuesta in opcion) and len(respuesta)>0):
+        while not ((respuesta in opcion) and len(respuesta)>0 and len(especialidad)<= j):
             j = 1
             for i in especialidad:
                 print('{0}.-{1}'.format(j, i))
                 opcion += str(j)
                 j +=1
+                #print(opcion)
             respuesta = input('\tIngrese una opcion de la Especialidad: ')
-            if not ((respuesta in opcion) and len(respuesta) > 0):
+            if not ((respuesta in opcion) and len(respuesta) > 0 and len(especialidad)<= j):
                 print('Ingrese una opcion correcta\n')
                 time.sleep(3)
                 os.system('clear')
@@ -235,6 +236,7 @@ def menuPrincipal():
         elif t == "2":
             reporte()
         #modificar datos
+
         elif t == "3":
             print("\tModificacion de datos")
             modificar()
@@ -263,7 +265,7 @@ def menuPrincipal():
 #iniciar coneccion datos
 os.system('clear')
 print (end="\tINSTITUTO DEL SUR AREQUIPA\nConectando base datos...")
-con=sqlite3.connect("trabajo final.s3db")
+con=sqlite3.connect("trabajo-final.s3db")
 print("OK")
 time.sleep(1)
 os.system("clear")

@@ -12,7 +12,7 @@ class especialidadesisur:
         return  carrerasProfesionales
 
     def opciones():
-        opcionesTarea = ["Inscripciones","Reporte Estudiantes","Modificar Datos","Eliminar Registro"]
+        opcionesTarea = ["Inscripciones","Reporte Estudiantes","Modificar Datos","Eliminar Registro","pagos"]
         return  opcionesTarea
 
 
