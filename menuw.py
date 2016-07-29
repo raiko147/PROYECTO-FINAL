@@ -75,15 +75,43 @@ def inscripcionNueva():
     while not (s.lower() == 'si' or s == 'c'):
 
         print('\tINGRESO DATOS DE ESTUDIANTE')
+'''
+CREATE TABLE registro(
+id integer primary key,
+nombre var(20) not null,
+apellidos var(20) not null,
+edad int(2) not null,
+dni int(8) not null,
+direccion var(30) not null,
+sexo var(1) not null,
+correo var(32) not null,
+especialidad var(60) not null,
+observaciones var(60));
+
+'''
+
     #nombre var (20), apellidos var(20), edad integer(2), dni integer(8), direccion var(30),
-    # especialidad, # fecha de nacimiento, observaciones var(60)
+    # #sexo,#correo, especialidad, observaciones var(60),
 
         #ingreso de apellidos y nombres compltos
-        nombre = ingresoAlfabetico("nombres",20)
-        apellido = ingresoAlfabetico("apellidos",20)
-        edad = ingresoNumerico("edad",2)
-        dni = ingresoNumerico("dni", 8)
-        direccion = ingresoAlfanumerico("direccion", 30, 1)        #ingreso direccion
+        nombre = ingresoAlfabetico("nombres",20)                    #ingreso nombre
+        apellido = ingresoAlfabetico("apellidos",20)                #ingreso apellido
+        edad = ingresoNumerico("edad",2)                            #ingreso edad
+        dni = ingresoNumerico("dni", 8)                             #ingreso dni
+        direccion = ingresoAlfanumerico("direccion", 30, 1)         #ingreso direccion
+        #ingreso sexo
+        sexo =""
+        while not (sexo.lower()=="m" or sexo.lower()=="f"):
+            sexo = ingresoAlfabetico("sexo",1)
+            sexo = sexo.upper()
+            if not (sexo.lower()=="m" or sexo.lower()=="f"):
+                print("Error solo masculino (M) femenino (F)")
+        #iingreso correo
+        correo = ""
+        while not (correo in "@"):
+            correo = ingresoAlfanumerico("correo",32,15)
+            if not (correo in "@"):
+                print("Ingrese un correo valido")
         #Ingreso la especilidad que estudiara
         especialidad = especialidadesisur.carreras()
         print('\tEspecialidad que estudiara el estudiante')
@@ -104,7 +132,7 @@ def inscripcionNueva():
         respuesta = int(respuesta)
         respuestaEligida = especialidad[respuesta-1]
         observaciones = ingresoAlfanumerico("observaciones (opcional)", 60, 0)
-        #buble para ingreso de confirmacion
+        #bucle para ingreso de confirmacion
         while not (s.lower() == 'si' or s == 'c'):
             s = input('Para guardar SI, cancelar C : ')
             if not s.lower() == 'si' or s.lower() == 'c' :
