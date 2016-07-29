@@ -1,3 +1,5 @@
+#programa base de datos menu principal
+
 from modulow import *
 from especialidades import *
 import time
