@@ -94,7 +94,7 @@ def nuevo():
 
 def menu():
     os.system("cls")
-    print("Base de datos del Instituto del Sur")
+    print("Base de datos de docentes  del Instituto del Sur")
     print("")
     print("1.- agregar datos del docente")
     print("2.- Reporte del docente")
@@ -144,7 +144,7 @@ def reporte():
         print("\t codigo:"'\t'+str(docentes[0]))
     con.commit()
     con.close()
-    input()
+    time.sleep(3)
     menu()
 def modificar():
     con=sqlite3.connect("trabajo-final.s3db")
@@ -186,7 +186,7 @@ def modificar():
     correo=input("Digite nuevo correo o modifique")
     especialidad=input("Digite nueva especialidad o modifique")
     observaciones=input("Digire nuevas observaciones o modifique")
-    sql = "UPDATE docentes set nombre ='"+nombre+"',apellidos ='"+apellidos+"', edad='"+edad+"',dni='"+dni+"',direccion ='"+direccion+"',sexo ='"+correo+"',nombre ='"+correo+"',nombre ='"+especialidad+"',nombre ='"+observaciones+"' where codigo = "+cod
+    sql = "UPDATE docentes set nombre ='"+nombre+"',apellidos ='"+apellidos+"', edad='"+edad+"',dni='"+srt(dni)+"',direccion ='"+direccion+"',sexo ='"+str(sexo)+"',correo ='"+correo+"',especialidad ='"+especialidad+"',observaciones ='"+observaciones+"' where codigo = "+cod
     cursor.execute(sql)
 
     con.commit()
