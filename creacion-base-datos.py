@@ -13,6 +13,9 @@ cursor.execute("CREATE TABLE registro(id integer primary key,nombre var(20) not 
                "sexo var(1) not null,correo var(32) not null,especialidad var(60) not null,observaciones var(60));")
 #cerrar coneccion
 con.commit()
+#creacion de tabla de pagos
+cursor.execute("CREATE TABLE pagos(codigo recibo integer primary key, concepto var(60) not null,"
+                "cantidad int(1) not null, nombre var(20));")
 print(end="\tCerrando coneccion base datos... ")
 con.close()
 print("ok")
