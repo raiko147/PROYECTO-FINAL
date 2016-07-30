@@ -229,6 +229,63 @@ def modificar():
             reporte()
         if not (s in '123' and len(s)==1 ):
             print("\tIngrese opcion correcta")
+def menuAlumno():
+            print("\tMenu Alumno")
+            opcion, j, opcionElegido, menuAlumno = "", 1," ", especialidadesisur.opcionesAlumnos()
+            for i in menuAlumno:
+                print("{0}.-{1}".format((j), i))
+                opcion += str(j)
+                j += 1
+            print("{}.-Salir de menu alumno".format(j))
+            opcion += str(j)
+            while not (opcionElegido == opcion[-1]):
+                opcionElegido = input("\tIngrese una opcion >> ".format(j))
+                if opcionElegido == "1":
+                    datos = inscripcionNueva()
+                    if datos :
+                        print(end="\tguardando... ")
+                        cursor.execute("insert into registro(nombre,apellidos,edad,dni,direccion,sexo,correo,especialidad,observaciones) "
+                                       "values(\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\")"
+                                       "".format(datos[0],datos[1],datos[2],datos[3],datos[4],datos[5],datos[6],datos[7],datos[8]))
+                        con.commit()
+                        print("ok")
+                #reporte estudiantes
+                elif opcionElegido == "2":
+                    reporte()
+                #modificar datos
+
+                elif opcionElegido == "3":
+                    print("\tModificacion de datos")
+                    modificar()
+                #eliminar datos
+                elif opcionElegido == "4":
+                    print("\tEliminar registro")
+                    codigo = codigoEstudiante()
+                    s = ""
+                    while not (s=="si" or s=="no" or s=="s" or s=="n" or codigo ==None ):
+                        s = input("Esta seguro que desea eliminar el codigo {} si/no: ".format(codigo)).lower()
+                        if s == "si" or s=="s" :
+                            print(end="\teliminando... ")
+                            cursor.execute("delete from registro where id =\'{}\'".format(codigo))
+                            con.commit()
+                            print("ok")
+                        elif s =="no" or s=="n" :
+                            print("\tcancelado")
+                        if not (s=="si" or s=="no"or s=="s" or s=="n"):
+                            print("\tconfirme correctamente")
+                if not (opcionElegido == opcion[-1]):
+                    print("Ingrese opcion correcta")
+
+            print()
+            s = input("Desea continuar en el programa? si/no:").lower()
+            if not ((s == k[-1] and len(s)==1) or s == "si" or s=="no" or s=="s" or s=="n"):
+                print("Ingrese correctamente las opciones")
+            os.system("clear")
+
+def menuPrincipal(): #solo referencia no copiar esta funcion
+    opciones = especialidadesisur.opcionesmenuprincipal()
+
+
 
 def menuPrincipal():
     opciones = especialidadesisur.opciones()
