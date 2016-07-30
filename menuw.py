@@ -359,7 +359,7 @@ def menu():
     print("1.- agregar datos del alumno")
     print("2.- ver alumno")
     print("3.- modificar datos del alumno")
-    print("4.- iliminar datos del alumno")
+    print("4.- eliminar datos del alumno")
     print("5.- salir")
     while(1):
         try:
