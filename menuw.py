@@ -143,7 +143,7 @@ def inscripcionNueva():
     if s.lower() == 'si':
         if observaciones == None:
             observaciones = ''
-        return [nombre,apellido,edad,dni,direccion, respuestaEligida, sexo, correo, observaciones]
+        return [nombre,apellido,edad,dni,direccion, sexo, correo, respuestaEligida, observaciones]
 
     else:
         print('Los datos ingresados no se registraron')
@@ -292,12 +292,16 @@ def menuDocentes():
             print("\tMenu Docente")
             opcion, j, opcionElegido, menuAlumno = "", 1," ", especialidadesisur.opcionesDocentes()
             for i in menuAlumno:
-                print("{0}.-{1}".format((j), i))
                 opcion += str(j)
                 j += 1
-            print("{}.-Salir de menu Docente".format(j))
+
             opcion += str(j)
             while not (opcionElegido == opcion[-1]):
+                j = 1
+                for i in menuAlumno:
+                    print("{0}.-{1}".format((j), i))
+                    j += 1
+                print("{}.-Salir de menu Docente".format(j))
                 opcionElegido = input("\tIngrese una opcion >> ".format(j))
                 if opcionElegido == "1":
                     datos = inscripcionNueva()
