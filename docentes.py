@@ -61,7 +61,7 @@ def nuevo():
         try:
             print("Ingrese su Sexo F/M: ")
             sexo=input()
-            sexo=str(sexo)
+            sexo=upper(str(sexo))
             while(len(str(sexo))!=1):
                 print("Ingrese solo un caracter F O M : ")
             sexo=input()
