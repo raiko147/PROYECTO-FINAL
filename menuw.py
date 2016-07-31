@@ -91,7 +91,7 @@ def inscripcionNueva():
     s = ' '
     while not (s.lower() == 'si' or s == 'c'):
 
-        print('\tINGRESO DATOS DE ESTUDIANTE')
+        print('\tINGRESO DATOS')
 
 
     #nombre var (20), apellidos var(20), edad integer(2), dni integer(8), direccion var(30),
@@ -155,7 +155,7 @@ def tablaCodigo(nombretabla):
         id.append(i[0])
     s = ""
     print("\tCodigos registrados {}".format(id))
-    print("\tCantidad de alumonos: {}".format(len(id)))
+    print("\tCantidad Registrados: {}".format(len(id)))
     while not ( s in id or len(id) == 0):
         while True:
             try:
@@ -189,9 +189,9 @@ def reporte(nombretabla,nombreColumna_de_codigo):
                 print()
                 #ingreso de codigo
                 codigo = tablaCodigo(nombretabla)
-                cursor.execute("select * from {0} where id in ({1})".format(codigo[0],codigo[1]))
+                cursor.execute("select * from {0} where {2} in ({1})".format(codigo[0],codigo[1],nombreColumna_de_codigo))
                 codigo = "" #deshace el codigo para el nuevo reporte
-            x,datos =0, ["Codigo","Nombres","Apellidos","Edad","DNI","Direccion","Especialidad","Observaciones"]
+            x,datos =0, ["Codigo","Nombres","Apellidos","Edad","DNI","Direccion", "Sexo", "Correo","Especialidad","Observaciones"]
             #imprime el reporte depende de la opcion
             print()
             for i in cursor:
@@ -235,13 +235,14 @@ def modificar(nombretabla):
 def menuAlumno():
             print("\tMenu Alumno")
             opcion, j, opcionElegido, menuAlumno = "", 1," ", especialidadesisur.opcionesAlumnos()
-            for i in menuAlumno:
-                print("{0}.-{1}".format((j), i))
-                opcion += str(j)
-                j += 1
-            print("{}.-Salir de menu alumno".format(j))
-            opcion += str(j)
+
             while not (opcionElegido == opcion[-1]):
+                for i in menuAlumno:
+                    print("{0}.-{1}".format((j), i))
+                    opcion += str(j)
+                    j += 1
+                print("{}.-Salir de menu alumno".format(j))
+                opcion += str(j)
                 opcionElegido = input("\tIngrese una opcion >> ".format(j))
                 if opcionElegido == "1":
                     datos = inscripcionNueva()
