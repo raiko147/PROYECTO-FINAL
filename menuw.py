@@ -344,50 +344,6 @@ def menuDocentes():
 
             print()
             os.system("clear")
-def menuPrincipal():
-    opciones = especialidadesisur.opcionesmenuprincipal()
-    j,k, s = 1,'', ''
-    for i in opciones:
-        k+=str(j)
-        j+=1
-    k+=str(j)
-    k = str(k)
-    while not ((s == k[-1] and len(s)==1) or (s == "no" or s=="n")):
-        t = ""
-        while not (t in k and len(t)==1):
-            print("\tINSTITUTO DEL SUR AREQUIPA\n\tMENU PRINCIPAL")
-            j = 1
-            for i in opciones:
-                print("{0}.-{1}".format(j, i))
-                j+=1
-            print("{0}.-SALIR DEL PROGRAMA".format(j))
-            t = input("\n\tIngrese una opcion: ")
-            if not (t in k and len(t)==1 ):
-                print('Ingrese una opcion correcta')
-        #nueva inscripcion
-        if t == "1":
-            menuAlumno()
-        #reporte estudiantes
-        elif t == "2":
-            print("docentes")
-            menuDocentes()
-        #modificar datos
-
-        elif t == "3":
-            print("\tPersonal administrativo")
-
-        #eliminar datos
-        elif t == "4":
-            print("\tmatriculas")
-
-        #pagos
-        elif t == "5" :
-            print("pagos")
-        print()
-        s = input("Desea continuar en el programa principal? si/no:").lower()
-        if not ((s == k[-1] and len(s)==1) or s == "si" or s=="no" or s=="s" or s=="n"):
-            print("Ingrese correctamente las opciones")
-        os.system("clear")
 
 def menuAdministrativos():
             print("\tMenu Administrativos")
@@ -444,6 +400,50 @@ def menuAdministrativos():
             print()
             os.system("clear")
 
+def menuPrincipal():
+    opciones = especialidadesisur.opcionesmenuprincipal()
+    j,k, s = 1,'', ''
+    for i in opciones:
+        k+=str(j)
+        j+=1
+    k+=str(j)
+    k = str(k)
+    while not ((s == k[-1] and len(s)==1) or (s == "no" or s=="n")):
+        t = ""
+        while not (t in k and len(t)==1):
+            print("\tINSTITUTO DEL SUR AREQUIPA\n\tMENU PRINCIPAL")
+            j = 1
+            for i in opciones:
+                print("{0}.-{1}".format(j, i))
+                j+=1
+            print("{0}.-SALIR DEL PROGRAMA".format(j))
+            t = input("\n\tIngrese una opcion: ")
+            if not (t in k and len(t)==1 ):
+                print('Ingrese una opcion correcta')
+        #nueva inscripcion
+        if t == "1":
+            menuAlumno()
+        #reporte estudiantes
+        elif t == "2":
+            print("docentes")
+            menuDocentes()
+        #modificar datos
+
+        elif t == "3":
+            print("\tPersonal administrativo")
+
+        #eliminar datos
+        elif t == "4":
+            print("\tmatriculas")
+
+        #pagos
+        elif t == "5" :
+            print("pagos")
+        print()
+        s = input("Desea continuar en el programa principal? si/no:").lower()
+        if not ((s == k[-1] and len(s)==1) or s == "si" or s=="no" or s=="s" or s=="n"):
+            print("Ingrese correctamente las opciones")
+        os.system("clear")
 
 
 #iniciar coneccion datos
