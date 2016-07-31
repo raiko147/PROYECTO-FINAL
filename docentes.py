@@ -4,39 +4,28 @@ import sqlite3
 
 def verificar(a):
     for c in a:
-        if(ord(c)<65 or ord(c)>90 ) and (ord(c)<97 or ord(c)>122) and (ord(c)!=32):
+        if((ord(c)<65 or ord(c)>90 ) and (ord(c)<97 or ord(c)>122) and (ord(c)!=32)):
             return False
     return True
 
 def nuevo():
     os.system("cls")
-    print("ingrese su nombre")
-    nombre=input()
+    nombre=input(("Ingrese su Nombre: "))
     while(not verificar(nombre)):
-        nombre=input("ingrese su nombre correctamente: ")
-    while(1):
-        try:
-            print("ingrese su edad")
-            edad=input()
-            edad=int(edad)
-            while(edad<0 or edad>170):
-                print("edad incorrecta vuelv intentar...: ")
-                edad=input()
-                edad=int(edad)
-            break
-        except ValueError:
-            print("ingrese correctamente ...: ")
-    print("ingrese sus Apellidos Completos")
-    apellidos=input()
+        print("Ingrese su nombre correctamente: ")
+        nombre=input(("Ingrese su Nombre: "))
+    
+    apellidos=input("Ingrese sus Apellidos: ")
     while(not verificar(apellidos)):
-        apellidos=input("ingrese sus Apellidos  correctamente: ")
+        print("Ingrese sus Apellidos  correctamente: ")
+        apellidos=input("Ingrese sus Apellidos: ")
     while(1):
         try:
-            print("ingrese su Edad")
+            print("Ingrese su Edad")
             edad=input()
             edad=int(edad)
             while(edad<0 or edad>170):
-                print("edad incorrecta vuelv intentar...: ")
+                print("edad incorrecta vuelva intentar...: ")
                 edad=input()
                 edad=int(edad)
             break
@@ -45,15 +34,15 @@ def nuevo():
     
     while(1):
         try:
-            print("ingrese su dni")
+            print("Ingrese su Dni")
             dni=input()
             dni=int(dni)
             while(len(str(dni))!=8):
-                dni=int(input("ingrese dni de 8 digitos"))
+                dni=int(input("Ingrese dni de 8 digitos"))
             break
         except ValueError:
-            print("error ingrese correctamente su dni")
-    print("ingrese su Direccion")
+            print("Error...!!!Ingrese correctamente su DNI")
+    print("Ingrese su Direccion")
     direccion=input()
     
     data_sexo=""
@@ -78,11 +67,11 @@ def nuevo():
     correo=input()
     print("ingrese su especialidad")
     especialidad=input()
-    while(not verificar(especialidad):
+    while(not verificar(especialidad)):
         especialidad=input("ingrese su especialidad corretamente: ")
     print("ingrese sus observaciones")
     observaciones=input()
-    while(not verificar(observaciones):
+    while(not verificar(observaciones)):
         observaciones=input("ingrese sus observaciones correctamente: ")
     con=sqlite3.connect("trabajo-final.s3db")
     cursor=con.cursor()
@@ -95,17 +84,16 @@ def nuevo():
 def menu():
     os.system("clear")
     print("-----------------------------------------------------------------------------")
-    print("/tBase de datos de docentes  del Instituto del Sur")
-    print("")
-    print("/t1.- agregar datos del docente")
-    print("/t2.- Reporte del docente")
-    print("/t3.- modificar datos del docente")
-    print("/t4.- iliminar datos del docente")
-    print("/t5.- salir")
+    print("\tBase de datos de docentes  del Instituto del Sur\n")
+    print("\t1.- Agregar datos del docente")
+    print("\t2.- Reporte del docente")
+    print("\t3.- Modificar datos del Docente")
+    print("\t4.- Eliminar datos del Docente")
+    print("\t5.- Salir")
     print("-----------------------------------------------------------------------------")
     while(1):
         try:
-            print("ingrese una opcion")
+            print("Ingrese una opcion")
             entrada=input()
             entrada=int(entrada)
             while(entrada<0 or entrada>5):
@@ -134,16 +122,16 @@ def reporte():
         print("")
         print("\t docentes agregados")
         print("\t------------------------")
-        print("\t nombre:"'\t'+str(docentes[1]))
-        print("\t apellidos:"'\t'+str(docentes[2]))
-        print("\t edad:"'\t'+str(docentes[3]))
-        print("\t dni:"'\t'+str(docentes[4]))
-        print("\t direccion:"'\t'+str(docentes[5]))
-        print("\t sexo:"'\t'+str(docentes[6]))
-        print("\t correo:"'\t'+str(docentes[7]))
-        print("\t especialidad:"'\t'+str(docentes[8]))
-        print("\t observaciones:"'\t'+str(docentes[9]))
-        print("\t codigo:"'\t'+str(docentes[0]))
+        print("\t Nombre:"'\t'+str(docentes[1]))
+        print("\t Apellidos:"'\t'+str(docentes[2]))
+        print("\t Edad:"'\t'+str(docentes[3]))
+        print("\t Dni:"'\t'+str(docentes[4]))
+        print("\t Direccion:"'\t'+str(docentes[5]))
+        print("\t Sexo:"'\t'+str(docentes[6]))
+        print("\t Correo:"'\t'+str(docentes[7]))
+        print("\t Especialidad:"'\t'+str(docentes[8]))
+        print("\t Observaciones:"'\t'+str(docentes[9]))
+        print("\t Codigo:"'\t'+str(docentes[0]))
     con.commit()
     con.close()
     time.sleep(3)
@@ -156,16 +144,16 @@ def modificar():
         print("")
         print("\t docentes agregados")
         print("\t------------------------")
-        print("\t nombre:"'\t'+str(docentes[1]))
-        print("\t apellidos:"'\t'+str(docentes[2]))
-        print("\t edad:"'\t'+str(docentes[3]))
-        print("\t dni:"'\t'+str(docentes[4]))
-        print("\t direccion:"'\t'+str(docentes[5]))
-        print("\t sexo:"'\t'+str(docentes[6]))
-        print("\t correo:"'\t'+str(docentes[7]))
-        print("\t especialidad:"'\t'+str(docentes[8]))
-        print("\t observaciones:"'\t'+str(docentes[9]))
-        print("\t codigo:"'\t'+str(docentes[0]))
+        print("\t Nombre:"'\t'+str(docentes[1]))
+        print("\t Apellidos:"'\t'+str(docentes[2]))
+        print("\t Edad:"'\t'+str(docentes[3]))
+        print("\t Dni:"'\t'+str(docentes[4]))
+        print("\t Direccion:"'\t'+str(docentes[5]))
+        print("\t Sexo:"'\t'+str(docentes[6]))
+        print("\t Correo:"'\t'+str(docentes[7]))
+        print("\t Especialidad:"'\t'+str(docentes[8]))
+        print("\t Observaciones:"'\t'+str(docentes[9]))
+        print("\t Codigo:"'\t'+str(docentes[0]))
     cod=input("digite el codigo del Docente que desea modificar")
     for docentes in cursor:
         if int(docentes[0])==int(cod):
@@ -205,16 +193,16 @@ def iliminar():
         print("")
         print("\t docentes agregados")
         print("\t------------------------")
-        print("\t nombre:"'\t'+str(docentes[1]))
-        print("\t apellidos:"'\t'+str(docentes[2]))
-        print("\t edad:"'\t'+str(docentes[3]))
-        print("\t dni:"'\t'+str(docentes[4]))
-        print("\t direccion:"'\t'+str(docentes[5]))
-        print("\t sexo:"'\t'+str(docentes[6]))
+        print("\t Nombre:"'\t'+str(docentes[1]))
+        print("\t Apellidos:"'\t'+str(docentes[2]))
+        print("\t Edad:"'\t'+str(docentes[3]))
+        print("\t Dni:"'\t'+str(docentes[4]))
+        print("\t Direccion:"'\t'+str(docentes[5]))
+        print("\t Sexo:"'\t'+str(docentes[6]))
         print("\t correo:"'\t'+str(docentes[7]))
-        print("\t especialidad:"'\t'+str(docentes[8]))
-        print("\t observaciones:"'\t'+str(docentes[9]))
-        print("\t codigo:"'\t'+str(docentes[0]))
+        print("\t Especialidad:"'\t'+str(docentes[8]))
+        print("\t Observaciones:"'\t'+str(docentes[9]))
+        print("\t Codigo:"'\t'+str(docentes[0]))
     cod=input("digite el codigo  que desea iliminar")
     sql="delete from instituto where codigo="+cod
     cursor.execute(sql)
