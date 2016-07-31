@@ -389,22 +389,6 @@ def menuPrincipal():
             print("Ingrese correctamente las opciones")
         os.system("clear")
 
-#iniciar coneccion datos
-os.system('clear')
-print (end="\tINSTITUTO DEL SUR AREQUIPA\nConectando base datos...")
-con=sqlite3.connect("trabajo-final.db")
-print("OK")
-time.sleep(1)
-os.system("clear")
-cursor=con.cursor()
-menuPrincipal()
-#cerrar coneccion
-con.commit()
-print(end="\tCerrando coneccion base datos... ")
-con.close()
-print("ok")
-print("\tAdios \4\4")
-
 def menuAdministrativos():
             print("\tMenu Administrativos")
             opcion, j, opcionElegido, menuAlumno = " ", 1,"", especialidadesisur.opcionesAdministrativos()
@@ -459,3 +443,22 @@ def menuAdministrativos():
 
             print()
             os.system("clear")
+
+
+
+#iniciar coneccion datos
+os.system('clear')
+print (end="\tINSTITUTO DEL SUR AREQUIPA\nConectando base datos...")
+con=sqlite3.connect("trabajo-final.db")
+print("OK")
+time.sleep(1)
+os.system("clear")
+cursor=con.cursor()
+menuPrincipal()
+#cerrar coneccion
+con.commit()
+print(end="\tCerrando coneccion base datos... ")
+con.close()
+print("ok")
+print("\tAdios \4\4")
+
