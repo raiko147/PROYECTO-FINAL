@@ -234,7 +234,7 @@ def modificar(nombretabla):
             print("\tIngrese opcion correcta")
 def menuAlumno():
             print("\tMenu Alumno")
-            opcion, j, opcionElegido, menuAlumno = "", 1," ", especialidadesisur.opcionesAlumnos()
+            opcion, j, opcionElegido, menuAlumno = " ", 1,"", especialidadesisur.opcionesAlumnos()
 
             while not (opcionElegido == opcion[-1]):
                 for i in menuAlumno:
