@@ -283,12 +283,10 @@ def menuAlumno():
                     print("Ingrese opcion correcta")
 
             print()
-<<<<<<< HEAD
-=======
-            s = input("Desea continuar en el programa? si/no:").lower()
-            if not ((s == k[-1] and len(s)==1) or s == "si" or s=="no" or s=="s" or s=="n"): #error
-                print("Ingrese correctamente las opciones")
->>>>>>> 28817fd169bd02fb284be75f922863c7aaffb4b5
+#<<<<<<< HEAD
+#=======
+
+#>>>>>>> 28817fd169bd02fb284be75f922863c7aaffb4b5
             os.system("clear")
 def menuDocentes():
             print("\tMenu Docente")
@@ -339,9 +337,6 @@ def menuDocentes():
                     print("Ingrese opcion correcta")
 
             print()
-            s = input("Desea continuar en el programa? si/no:").lower()
-            if not ((s == k[-1] and len(s)==1) or s == "si" or s=="no" or s=="s" or s=="n"):
-                print("Ingrese correctamente las opciones")
             os.system("clear")
 def menuPrincipal():
     opciones = especialidadesisur.opcionesmenuprincipal()
@@ -383,7 +378,7 @@ def menuPrincipal():
         elif t == "5" :
             print("pagos")
         print()
-        s = input("Desea continuar en el programa? si/no:").lower()
+        s = input("Desea continuar en el programa principal? si/no:").lower()
         if not ((s == k[-1] and len(s)==1) or s == "si" or s=="no" or s=="s" or s=="n"):
             print("Ingrese correctamente las opciones")
         os.system("clear")
