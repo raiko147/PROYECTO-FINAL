@@ -16,7 +16,7 @@ class especialidadesisur:
         return  opcionesTarea
 
     def opcionesmenuprincipal():
-        opcionesTarea = ["Estudiantes", "Docentes", "Personal Administrativo", "maticulas", "Pagos"]
+        opcionesTarea = ["Estudiantes", "Docentes", "Personal Administrativo", "Matriculas", "Pagos"]
         return opcionesTarea
 
 

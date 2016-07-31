@@ -307,28 +307,19 @@ def menuPrincipal():
             menuAlumno()
         #reporte estudiantes
         elif t == "2":
-            reporte()
+            print("docentes")
         #modificar datos
 
         elif t == "3":
-            print("\tModificacion de datos")
-            modificar()
+            print("\tPersonal administrativo")
+
         #eliminar datos
         elif t == "4":
-            print("\tEliminar registro")
-            codigo = codigoEstudiante()
-            s = ""
-            while not (s=="si" or s=="no" or s=="s" or s=="n" or codigo ==None ):
-                s = input("Esta seguro que desea eliminar el codigo {} si/no: ".format(codigo)).lower()
-                if s == "si" or s=="s" :
-                    print(end="\teliminando... ")
-                    cursor.execute("delete from registro where id =\'{}\'".format(codigo))
-                    con.commit()
-                    print("ok")
-                elif s =="no" or s=="n" :
-                    print("\tcancelado")
-                if not (s=="si" or s=="no"or s=="s" or s=="n"):
-                    print("\tconfirme correctamente")
+            print("\tmatriculas")
+
+        #pagos
+        elif t == "5" :
+            print("pagos")
         print()
         s = input("Desea continuar en el programa? si/no:").lower()
         if not ((s == k[-1] and len(s)==1) or s == "si" or s=="no" or s=="s" or s=="n"):
