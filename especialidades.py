@@ -12,11 +12,14 @@ class especialidadesisur:
         return  carrerasProfesionales
 
     def opcionesAlumnos():
-        opcionesTarea = ["Inscripciones","Reporte Estudiantes","Modificar Datos","Eliminar Registro","pagos"]
+        opcionesTarea = ["Inscripciones","Reporte Estudiantes","Modificar Datos","Eliminar Registro"]
         return  opcionesTarea
 
     def opcionesmenuprincipal():
         opcionesTarea = ["Estudiantes", "Docentes", "Personal Administrativo", "Matriculas", "Pagos"]
+        return opcionesTarea
+    def opcionesDocentes():
+        opcionesTarea = ["Inscripciones", "Reporte Docentes", "Modificar Datos", "Eliminar Registro"]
         return opcionesTarea
 
 

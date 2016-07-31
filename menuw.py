@@ -147,8 +147,8 @@ def inscripcionNueva():
     else:
         print('Los datos ingresados no se registraron')
         return None
-def codigoEstudiante():
-    cursor.execute("select id from registro")
+def tablaCodigo(nombretabla):
+    cursor.execute("select id from {}".format(nombretabla))
     id = []
     for i in cursor:
         id.append(i[0])
@@ -166,10 +166,11 @@ def codigoEstudiante():
     if len(id) == 0:
         print("Registro vacio")
         return
-    return s
+    cota = [nombretabla,s]
+    return cota
 
-def reporte():
-    cursor.execute("select id from registro")
+def reporte(nombretabla,nombreColumna_de_codigo):
+    cursor.execute("select {0} from {1}".format(nombreColumna_de_codigo,nombretabla))
     id = []
     for i in cursor:
         id.append(i[0])
@@ -182,12 +183,12 @@ def reporte():
 
             if t =="1":
                 print()
-                cursor.execute("select * from registro ")
+                cursor.execute("select * from {} ".format(nombretabla))
             elif t =="2":
                 print()
                 #ingreso de codigo
-                codigo = codigoEstudiante()
-                cursor.execute("select * from registro where id in ({})".format(codigo))
+                codigo = tablaCodigo(nombretabla)
+                cursor.execute("select * from {0} where id in ({1})".format(codigo[0],codigo[1]))
                 codigo = "" #deshace el codigo para el nuevo reporte
             x,datos =0, ["Codigo","Nombres","Apellidos","Edad","DNI","Direccion","Especialidad","Observaciones"]
             #imprime el reporte depende de la opcion
@@ -210,19 +211,20 @@ def reporte():
         if not (s == "no" or s=="n") or (s=="si" or s=="s"):
             print("\tEsta en menu reporte ingrese una opcion correcta")
 
-def modificar():
+def modificar(nombretabla):
     print()
     s=''
     while not (s=='3' ):
         print("Menu Modificacion datos")
         s = input("1.-Modificar segun al codigo\n2.-Consultar datos\n3.-Cancelar\nIngrese una opcion >>")
         if s == "1":
-            codigo = codigoEstudiante()
+            codigo = tablaCodigo(nombretabla)
+            codigo = codigo[1]
             dat = inscripcionNueva()
             print(end="\tActualizando...")
-            cursor.execute("update registro set nombre=\"{0}\",apellidos=\"{1}\",edad=\"{2}\",dni=\"{3}\","
+            cursor.execute("update {10} set nombre=\"{0}\",apellidos=\"{1}\",edad=\"{2}\",dni=\"{3}\","
                            "direccion=\"{4}\",sexo=\"{5}\",correo=\"{6}\",especialidad=\"{7}\",observaciones=\"{8}\" where id = \"{9}\""
-                           "".format(dat[0],dat[1],dat[2],dat[3],dat[4],dat[5],dat[6],dat[7],dat[8],codigo))
+                           "".format(dat[0],dat[1],dat[2],dat[3],dat[4],dat[5],dat[6],dat[7],dat[8],codigo,nombretabla))
             con.commit()
             print("ok\n")
         elif s == "2":
@@ -251,7 +253,7 @@ def menuAlumno():
                         print("ok")
                 #reporte estudiantes
                 elif opcionElegido == "2":
-                    reporte()
+                    reporte("registro","id")
                 #modificar datos
 
                 elif opcionElegido == "3":
@@ -282,13 +284,13 @@ def menuAlumno():
                 print("Ingrese correctamente las opciones")
             os.system("clear")
 def menuDocentes():
-            print("\tMenu Alumno")
-            opcion, j, opcionElegido, menuAlumno = "", 1," ", especialidadesisur.opcionesAlumnos()
+            print("\tMenu Docente")
+            opcion, j, opcionElegido, menuAlumno = "", 1," ", especialidadesisur.opcionesDocentes()
             for i in menuAlumno:
                 print("{0}.-{1}".format((j), i))
                 opcion += str(j)
                 j += 1
-            print("{}.-Salir de menu alumno".format(j))
+            print("{}.-Salir de menu Docente".format(j))
             opcion += str(j)
             while not (opcionElegido == opcion[-1]):
                 opcionElegido = input("\tIngrese una opcion >> ".format(j))
@@ -296,29 +298,30 @@ def menuDocentes():
                     datos = inscripcionNueva()
                     if datos :
                         print(end="\tguardando... ")
-                        cursor.execute("insert into registro(nombre,apellidos,edad,dni,direccion,sexo,correo,especialidad,observaciones) "
+                        cursor.execute("insert into docentes(nombre,apellidos,edad,dni,direccion,sexo,correo,especialidad,observaciones) "
                                        "values(\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\")"
                                        "".format(datos[0],datos[1],datos[2],datos[3],datos[4],datos[5],datos[6],datos[7],datos[8]))
                         con.commit()
                         print("ok")
                 #reporte estudiantes
                 elif opcionElegido == "2":
-                    reporte()
+                    reporte("docentes","codigo")
                 #modificar datos
 
                 elif opcionElegido == "3":
                     print("\tModificacion de datos")
-                    modificar()
+                    modificar("docentes")
                 #eliminar datos
                 elif opcionElegido == "4":
                     print("\tEliminar registro")
-                    codigo = codigoEstudiante()
+                    codigo = tablaCodigo("docentes")
+                    codigo = codigo[1]
                     s = ""
                     while not (s=="si" or s=="no" or s=="s" or s=="n" or codigo ==None ):
                         s = input("Esta seguro que desea eliminar el codigo {} si/no: ".format(codigo)).lower()
                         if s == "si" or s=="s" :
                             print(end="\teliminando... ")
-                            cursor.execute("delete from registro where id =\'{}\'".format(codigo))
+                            cursor.execute("delete from docentes where codigo =\'{}\'".format(codigo))
                             con.commit()
                             print("ok")
                         elif s =="no" or s=="n" :
@@ -359,6 +362,7 @@ def menuPrincipal():
         #reporte estudiantes
         elif t == "2":
             print("docentes")
+            menuDocentes()
         #modificar datos
 
         elif t == "3":
