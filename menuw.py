@@ -329,7 +329,7 @@ def menuPrincipal():
 #iniciar coneccion datos
 os.system('clear')
 print (end="\tINSTITUTO DEL SUR AREQUIPA\nConectando base datos...")
-con=sqlite3.connect("trabajo-final.s3db")
+con=sqlite3.connect("trabajo-final.db")
 print("OK")
 time.sleep(1)
 os.system("clear")

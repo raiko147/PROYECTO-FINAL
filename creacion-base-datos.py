@@ -14,7 +14,7 @@ cursor.execute("CREATE TABLE registro(id integer primary key,nombre var(20) not 
 con.commit()
 #crecion de tablas cursos
 cursor.execute("CREATE TABLE cursos(codigo integer primary key,descripcion var(20) not null,"
-               "tipo_curso int(1) not null, creditos int(1) not null observaciones var(60));")
+               "tipo_curso int(1) not null, creditos int(1) not null, observaciones var(60));")
 con.commit()
 #creacion de tabla matriculas
 cursor.execute("CREATE TABLE matriculas(codigo_matricula integer primary key, ciclo int(20) not null,"
