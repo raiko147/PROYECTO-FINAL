@@ -11,12 +11,13 @@ class especialidadesisur:
                                  "Diseño de prendas de Vestir" ]
         return  carrerasProfesionales
 
-    def opciones():
+    def opcionesAlumnos():
         opcionesTarea = ["Inscripciones","Reporte Estudiantes","Modificar Datos","Eliminar Registro","pagos"]
         return  opcionesTarea
 
-    def opcionesmenuprincipal(self):
+    def opcionesmenuprincipal():
         opcionesTarea = ["Estudiantes", "Docentes", "Personal Administrativo", "maticulas", "Pagos"]
+        return opcionesTarea
 
 
 

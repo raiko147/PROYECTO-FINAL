@@ -71,7 +71,7 @@ def ingresoNumerico(denominacion,limite):
 
 def ingresoCorreo(denominacion, limitemayor, limiteinferior):
     correo, j,k,m ="",0,0,0
-    while not (correo in "@" and j == 0 and k>=limitemayor and k>=limiteinferior and m>0):
+    while not ("@" in correo and j == 0 and k<=limitemayor and k>=limiteinferior and m>0):
         correo = input("Ingrese {}: ".format(denominacion))
         for i in correo:
             if i == " ":
@@ -79,7 +79,7 @@ def ingresoCorreo(denominacion, limitemayor, limiteinferior):
             elif i==".":
                 m +=1
             k+=1
-        if not (correo in "@" and j == 0 and k>=limitemayor and k>=limiteinferior and m>0):
+        if not ("@" in correo and j == 0 and k<=limitemayor and k>=limiteinferior and m>0):
             print("Ingrese un correo valido")
     return correo
 
@@ -135,7 +135,7 @@ def inscripcionNueva():
         #bucle para ingreso de confirmacion
         while not (s.lower() == 'si' or s == 'c'):
             s = input('Para guardar SI, cancelar C : ')
-            if not s.lower() == 'si' or s.lower() == 'c' :
+            if not (s.lower() == 'si' or s.lower() == 'c') :
                 print('\tError ingrese opcion correcta')
 
     #termina la confirmacion de inscripcion
@@ -283,7 +283,7 @@ def menuAlumno():
             os.system("clear")
 
 def menuPrincipal():
-    opciones = especialidadesisur.opciones()
+    opciones = especialidadesisur.opcionesmenuprincipal()
     j,k, s = 1,'', ''
     for i in opciones:
         k+=str(j)
@@ -304,14 +304,7 @@ def menuPrincipal():
                 print('Ingrese una opcion correcta')
         #nueva inscripcion
         if t == "1":
-            datos = inscripcionNueva()
-            if datos :
-                print(end="\tguardando... ")
-                cursor.execute("insert into registro(nombre,apellidos,edad,dni,direccion,sexo,correo,especialidad,observaciones) "
-                               "values(\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\")"
-                               "".format(datos[0],datos[1],datos[2],datos[3],datos[4],datos[5],datos[6],datos[7],datos[8]))
-                con.commit()
-                print("ok")
+            menuAlumno()
         #reporte estudiantes
         elif t == "2":
             reporte()
