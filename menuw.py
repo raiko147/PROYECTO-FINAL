@@ -142,7 +142,7 @@ def inscripcionNueva():
     if s.lower() == 'si':
         if observaciones == None:
             observaciones = ''
-        return [nombre,apellido,edad,dni,direccion, respuestaEligida, observaciones]
+        return [nombre,apellido,edad,dni,direccion, respuestaEligida, sexo, correo, observaciones]
 
     else:
         print('Los datos ingresados no se registraron')
