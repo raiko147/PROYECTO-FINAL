@@ -235,11 +235,13 @@ def modificar(nombretabla):
 def menuAlumno():
             print("\tMenu Alumno")
             opcion, j, opcionElegido, menuAlumno = " ", 1,"", especialidadesisur.opcionesAlumnos()
-
-            while not (opcionElegido == opcion[-1]):#error string index out of range -- por que [-1]
+            for i in menuAlumno:
+                opcion += str(j)
+                j +=1
+            while not (opcionElegido == opcion[-1]):#error string index out of range -- por que [-1] es la ultimacifra
+                j=1
                 for i in menuAlumno:
                     print("{0}.-{1}".format((j), i))
-                    opcion += str(j)
                     j += 1
                 print("{}.-Salir de menu alumno".format(j))
                 opcion += str(j)
@@ -281,9 +283,6 @@ def menuAlumno():
                     print("Ingrese opcion correcta")
 
             print()
-            s = input("Desea continuar en el programa? si/no:").lower()
-            if not ((s == k[-1] and len(s)==1) or s == "si" or s=="no" or s=="s" or s=="n"):
-                print("Ingrese correctamente las opciones")
             os.system("clear")
 def menuDocentes():
             print("\tMenu Docente")
