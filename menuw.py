@@ -238,13 +238,14 @@ def menuAlumno():
             for i in menuAlumno:
                 opcion += str(j)
                 j +=1
+            opcion += str(j)
             while not (opcionElegido == opcion[-1]):#error string index out of range -- por que [-1] es la ultimacifra
-                j=1
+                j = 1
                 for i in menuAlumno:
                     print("{0}.-{1}".format((j), i))
                     j += 1
                 print("{}.-Salir de menu alumno".format(j))
-                opcion += str(j)
+
                 opcionElegido = input("\tIngrese una opcion >> ".format(j))
                 if opcionElegido == "1":
                     datos = inscripcionNueva()
@@ -267,6 +268,7 @@ def menuAlumno():
                 elif opcionElegido == "4":
                     print("\tEliminar registro")
                     codigo = tablaCodigo("registro","id")
+                    codigo = codigo[-1]
                     s = ""
                     while not (s=="si" or s=="no" or s=="s" or s=="n" or codigo ==None ):
                         s = input("Esta seguro que desea eliminar el codigo {} si/no: ".format(codigo)).lower()
