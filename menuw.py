@@ -282,7 +282,7 @@ def menuAlumno():
                         if not (s=="si" or s=="no"or s=="s" or s=="n"):
                             print("\tconfirme correctamente")
                 if not (opcionElegido == opcion[-1]):
-                    print("Ingrese opcion correcta")
+                    print("Ingrese una opcion")
 
             print()
 #<<<<<<< HEAD
@@ -340,7 +340,7 @@ def menuDocentes():
                         if not (s=="si" or s=="no"or s=="s" or s=="n"):
                             print("\tconfirme correctamente")
                 if not (opcionElegido == opcion[-1]):
-                    print("Ingrese opcion correcta")
+                    print("Ingrese una opcion")
 
             print()
             os.system("clear")
