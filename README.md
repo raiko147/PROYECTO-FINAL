@@ -5,10 +5,10 @@
 
 Este programa halla:
 
-*Inscripcion de estudiantes
-*Matriculas
-*Especialidad/Tecnica
-*Organizacion
+    *Inscripcion de estudiantes.
+    *Matriculas.
+    *Especialidad/Tecnica.
+    *Organizacion.
 
     1. ESQUEMA DEL PROGRAMA
         1.1. MENU PRINCIPAL
