@@ -283,6 +283,12 @@ def menuAlumno():
                     print("Ingrese opcion correcta")
 
             print()
+<<<<<<< HEAD
+=======
+            s = input("Desea continuar en el programa? si/no:").lower()
+            if not ((s == k[-1] and len(s)==1) or s == "si" or s=="no" or s=="s" or s=="n"): #error
+                print("Ingrese correctamente las opciones")
+>>>>>>> 28817fd169bd02fb284be75f922863c7aaffb4b5
             os.system("clear")
 def menuDocentes():
             print("\tMenu Docente")
