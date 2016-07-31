@@ -40,6 +40,25 @@ def nuevo():
             break
         except ValueError:
             print("error ingrese correctamente su dni")
+    data_sexo=""
+    while(1):
+        try:
+            print("Ingrese su Sexo F/M: ")
+            sexo=input()
+            sexo=str(sexo)
+            while(len(str(sexo))!=1):
+                print("Ingrese solo un caracter F O M : ")
+            sexo=input()
+            sexo=str(sexo)
+            data_sexo=str(sexo)
+            break
+        except ValueError:
+            print("Ingrese Correctamente su Sexo F/M: ")
+    if (data_sexo[0:1] == "F"):
+        sexo=F
+    elif(data_dni[0:2]=="M"):
+        sexo==M
+
     con=sqlite3.connect("trabajo final.s3db")
     cursor=con.cursor()
     cursor.execute("insert into instituto (nombre,edad,dni) values ('"+nombre+"','"+edad+"','"+str(dni)+"')")
