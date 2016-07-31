@@ -236,7 +236,7 @@ def menuAlumno():
             print("\tMenu Alumno")
             opcion, j, opcionElegido, menuAlumno = " ", 1,"", especialidadesisur.opcionesAlumnos()
 
-            while not (opcionElegido == opcion[-1]):
+            while not (opcionElegido == opcion[-1]):#error string index out of range -- por que [-1]
                 for i in menuAlumno:
                     print("{0}.-{1}".format((j), i))
                     opcion += str(j)
