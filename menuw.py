@@ -282,7 +282,7 @@ def menuAlumno():
 
             print()
             s = input("Desea continuar en el programa? si/no:").lower()
-            if not ((s == k[-1] and len(s)==1) or s == "si" or s=="no" or s=="s" or s=="n"):
+            if not ((s == k[-1] and len(s)==1) or s == "si" or s=="no" or s=="s" or s=="n"): #error
                 print("Ingrese correctamente las opciones")
             os.system("clear")
 def menuDocentes():
