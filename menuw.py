@@ -115,7 +115,7 @@ def inscripcionNueva():
 
         #Ingreso la especilidad que estudiara
         especialidad = especialidadesisur.carreras()
-        print('\tEspecialidad que estudiara el estudiante')
+        print('\tEspecialidad que estudia : ')
         j, opcion = 1, ''
         respuesta = ''
         while not ((respuesta in opcion) and len(respuesta)>0 and len(especialidad)<= j):
@@ -148,8 +148,8 @@ def inscripcionNueva():
     else:
         print('Los datos ingresados no se registraron')
         return None
-def tablaCodigo(nombretabla):
-    cursor.execute("select id from {}".format(nombretabla))
+def tablaCodigo(nombretabla,nombre_columna):
+    cursor.execute("select {0} from {1}".format(nombre_columna, nombretabla))
     id = []
     for i in cursor:
         id.append(i[0])
@@ -159,7 +159,7 @@ def tablaCodigo(nombretabla):
     while not ( s in id or len(id) == 0):
         while True:
             try:
-                s = int(input("\nIngrese codigo de estudiante: "))
+                s = int(input("\nIngrese codigo: "))
                 break
             except: print("\tError ingrese codigo valido")
         if not (s in id ):
@@ -180,7 +180,7 @@ def reporte(nombretabla,nombreColumna_de_codigo):
         t = ''
         while not (t =="3") :
             print("\n\tMENU REPORTE")
-            t = input("1.-Reporte completo de estudiantes\n2.-Reporte por codigo alumno\n3.-Salir\n\nIngrese una opcion >")
+            t = input("1.-Reporte completo\n2.-Reporte por codigo\n3.-Salir\n\nIngrese una opcion >")
 
             if t =="1":
                 print()
@@ -188,7 +188,7 @@ def reporte(nombretabla,nombreColumna_de_codigo):
             elif t =="2":
                 print()
                 #ingreso de codigo
-                codigo = tablaCodigo(nombretabla)
+                codigo = tablaCodigo(nombretabla, nombreColumna_de_codigo)
                 cursor.execute("select * from {0} where {2} in ({1})".format(codigo[0],codigo[1],nombreColumna_de_codigo))
                 codigo = "" #deshace el codigo para el nuevo reporte
             x,datos =0, ["Codigo","Nombres","Apellidos","Edad","DNI","Direccion", "Sexo", "Correo","Especialidad","Observaciones"]
@@ -212,14 +212,14 @@ def reporte(nombretabla,nombreColumna_de_codigo):
         if not (s == "no" or s=="n") or (s=="si" or s=="s"):
             print("\tEsta en menu reporte ingrese una opcion correcta")
 
-def modificar(nombretabla):
+def modificar(nombretabla, columna_codigo):
     print()
     s=''
     while not (s=='3' ):
         print("Menu Modificacion datos")
         s = input("1.-Modificar segun al codigo\n2.-Consultar datos\n3.-Cancelar\nIngrese una opcion >>")
         if s == "1":
-            codigo = tablaCodigo(nombretabla)
+            codigo = tablaCodigo(nombretabla, columna_codigo)
             codigo = codigo[1]
             dat = inscripcionNueva()
             print(end="\tActualizando...")
@@ -229,7 +229,7 @@ def modificar(nombretabla):
             con.commit()
             print("ok\n")
         elif s == "2":
-            reporte()
+            reporte(nombretabla,columna_codigo)
         if not (s in '123' and len(s)==1 ):
             print("\tIngrese opcion correcta")
 def menuAlumno():
@@ -262,11 +262,11 @@ def menuAlumno():
 
                 elif opcionElegido == "3":
                     print("\tModificacion de datos")
-                    modificar()
+                    modificar("registro","id")
                 #eliminar datos
                 elif opcionElegido == "4":
                     print("\tEliminar registro")
-                    codigo = codigoEstudiante()
+                    codigo = tablaCodigo("registro","id")
                     s = ""
                     while not (s=="si" or s=="no" or s=="s" or s=="n" or codigo ==None ):
                         s = input("Esta seguro que desea eliminar el codigo {} si/no: ".format(codigo)).lower()
@@ -319,11 +319,11 @@ def menuDocentes():
 
                 elif opcionElegido == "3":
                     print("\tModificacion de datos")
-                    modificar("docentes")
+                    modificar("docentes","codigo")
                 #eliminar datos
                 elif opcionElegido == "4":
                     print("\tEliminar registro")
-                    codigo = tablaCodigo("docentes")
+                    codigo = tablaCodigo("docentes","codigo")
                     codigo = codigo[1]
                     s = ""
                     while not (s=="si" or s=="no" or s=="s" or s=="n" or codigo ==None ):
