@@ -14,6 +14,10 @@ def nuevo():
     nombre=input()
     while(not verificar(nombre)):
         nombre=input("ingrese su nombre correctamente: ")
+    print("ingrese su apellidos")
+    apellidos=input()
+    while(not verificar(apellidos)):
+        apellidos=input("ingrese su apellido correctamente")
     while(1):
         try:
             print("ingrese su edad")
@@ -48,11 +52,11 @@ def menu():
     os.system("cls")
     print("Base de datos del Instituto del Sur")
     print("")
-    print("1.- agregar datos del alumno")
-    print("2.- ver alumno")
-    print("3.- modificar datos del alumno")
-    print("4.- iliminar datos del alumno")
-    print("5.- salir")
+    print("/t1.- agregar datos del alumno")
+    print("/t2.- ver alumno")
+    print("/t3.- modificar datos del alumno")
+    print("/t4.- iliminar datos del alumno")
+    print("/t5.- salir")
     while(1):
         try:
             print("ingrese una opcion")

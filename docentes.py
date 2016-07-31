@@ -93,14 +93,16 @@ def nuevo():
     menu()
 
 def menu():
-    os.system("cls")
-    print("Base de datos de docentes  del Instituto del Sur")
+    os.system("clear")
+    print("-----------------------------------------------------------------------------")
+    print("/tBase de datos de docentes  del Instituto del Sur")
     print("")
-    print("1.- agregar datos del docente")
-    print("2.- Reporte del docente")
-    print("3.- modificar datos del docente")
-    print("4.- iliminar datos del docente")
-    print("5.- salir")
+    print("/t1.- agregar datos del docente")
+    print("/t2.- Reporte del docente")
+    print("/t3.- modificar datos del docente")
+    print("/t4.- iliminar datos del docente")
+    print("/t5.- salir")
+    print("-----------------------------------------------------------------------------")
     while(1):
         try:
             print("ingrese una opcion")

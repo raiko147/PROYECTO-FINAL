@@ -96,7 +96,7 @@ def inscripcionNueva():
     #nombre var (20), apellidos var(20), edad integer(2), dni integer(8), direccion var(30),
     # #sexo,#correo, especialidad, observaciones var(60),
 
-        #ingreso de apellidos y nombres compltos
+        #ingreso de apellidos y nombres completos
         nombre = ingresoAlfabetico("nombres",20)                    #ingreso nombre
         apellido = ingresoAlfabetico("apellidos",20)                #ingreso apellido
         edad = ingresoNumerico("edad",2)                            #ingreso edad
