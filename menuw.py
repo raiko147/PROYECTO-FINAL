@@ -282,11 +282,6 @@ def menuAlumno():
                 print("Ingrese correctamente las opciones")
             os.system("clear")
 
-def menuPrincipal(): #solo referencia no copiar esta funcion
-    opciones = especialidadesisur.opcionesmenuprincipal()
-
-
-
 def menuPrincipal():
     opciones = especialidadesisur.opciones()
     j,k, s = 1,'', ''
