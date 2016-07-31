@@ -10,36 +10,36 @@ def verificar(a):
 
 def nuevo():
     os.system("cls")
-    print("ingrese su nombre")
-    nombre=input()
+    nombre=input(("Ingrese su nombre: "))
     while(not verificar(nombre)):
-        nombre=input("ingrese su nombre correctamente: ")
-    print("ingrese su apellidos")
-    apellidos=input()
+        print("Nombre Incorrecto...!!!vuelva Intentar")
+        nombre=input(("Ingrese su nombre: "))
+    apellidos=input(("Ingrese sus Apellidos: "))
     while(not verificar(apellidos)):
-        apellidos=input("ingrese su apellido correctamente")
+        print("Apellido Incorrecto...!!!Vuelva Intentar")
+        apellidos=input(("Ingrese sus Apellidos: "))
     while(1):
         try:
-            print("ingrese su edad")
+            print("Ingrese su Edad")
             edad=input()
             edad=int(edad)
             while(edad<0 or edad>170):
-                print("edad incorrecta vuelv intentar...: ")
+                print("Edad Incorrecta...!!!vuelva intentar: ")
                 edad=input()
                 edad=int(edad)
             break
         except ValueError:
-            print("ingrese correctamente ...: ")
+            print("Ingrese correctamente ...: ")
     while(1):
         try:
-            print("ingrese su dni")
+            print("Ingrese su DNI")
             dni=input()
             dni=int(dni)
             while(len(str(dni))!=8):
-                dni=int(input("ingrese dni de 8 digitos"))
+                dni=int(input("Error...!!!Ingrese DNI de 8 digitos"))
             break
         except ValueError:
-            print("error ingrese correctamente su dni")
+            print("Error...!!!Ingrese correctamente su DNI")
     data_sexo=""
     while(1):
         try:
@@ -47,7 +47,7 @@ def nuevo():
             sexo=input()
             sexo=str(sexo)
             while(len(str(sexo))!=1):
-                print("Ingrese solo un caracter F O M : ")
+                print("Ingrese solo un caracter F o M : ")
             sexo=input()
             sexo=str(sexo)
             data_sexo=str(sexo)
@@ -59,14 +59,14 @@ def nuevo():
     elif(data_dni[0:2]=="M"):
         sexo==M
     correo=input()
-    print("ingrese su especialidad")
+    print("Ingrese su Especialidad")
     especialidad=input()
     while(not verificar(especialidad)):
-        especialidad=input("ingrese su especialidad corretamente: ")
-    print("ingrese sus observaciones")
+        especialidad=input("Ingrese su Especialidad corretamente: ")
+    print("Ingrese sus Observaciones")
     observaciones=input()
     while(not verificar(observaciones)):
-        observaciones=input("ingrese sus observaciones correctamente: ")
+        observaciones=input("Ingrese sus Observaciones correctamente: ")
 
     con=sqlite3.connect("trabajo final.s3db")
     cursor=con.cursor()
@@ -80,23 +80,23 @@ def menu():
     os.system("cls")
     print("Base de datos del Instituto del Sur")
     print("")
-    print("/t1.- agregar datos del alumno")
-    print("/t2.- ver alumno")
-    print("/t3.- modificar datos del alumno")
-    print("/t4.- iliminar datos del alumno")
-    print("/t5.- salir")
+    print("\t1.- Agregar datos del Alumno")
+    print("\t2.- Ver Alumno")
+    print("\t3.- Modificar datos del Alumno")
+    print("\t4.- Eliminar datos del Alumno")
+    print("\t5.- Salir")
     while(1):
         try:
-            print("ingrese una opcion")
+            print("Ingrese una Opcion")
             entrada=input()
             entrada=int(entrada)
             while(entrada<0 or entrada>5):
-                print("ingrese correctamente la opcion")
+                print("Error...!!!Ingrese correctamente la opcion")
                 entrada=input()
                 entrada=int(entrada)
             break
         except ValueError:
-            print("ingrese correctamente una opcion valida")
+            print("Ingrese correctamente una opcion valida")
     if (entrada==1):
         nuevo()
     elif(entrada==2):
@@ -114,12 +114,12 @@ def reporte():
     cursor.execute("select*from instituto ")
     for instituto in cursor:
         print("")
-        print("\t alumnos agregados")
+        print("\t Alumnos Agregados")
         print("\t------------------------")
-        print("\t nombre:"'\t'+str(instituto[1]))
-        print("\t edad:"'\t'+str(instituto[2]))
-        print("\t dni:"'\t'+str(instituto[3]))
-        print("\t codigo:"'\t'+str(instituto[0]))
+        print("\t Nombre:"'\t'+str(instituto[1]))
+        print("\t Edad:"'\t'+str(instituto[2]))
+        print("\t DNI:"'\t'+str(instituto[3]))
+        print("\t Codigo:"'\t'+str(instituto[0]))
     con.commit()
     con.close()
     input()
@@ -130,12 +130,12 @@ def modificar():
     cursor.execute("select*from instituto ")
     for instituto in cursor:
         print("")
-        print("\t alumnos agregados")
+        print("\t Alumnos agregados")
         print("\t------------------------")
-        print("\t nombre:"'\t'+str(instituto[1]))
-        print("\t edad:"'\t'+str(instituto[2]))
-        print("\t dni:"'\t'+str(instituto[3]))
-        print("\t codigo:"'\t'+str(instituto[0]))
+        print("\t Nombre:"'\t'+str(instituto[1]))
+        print("\t Edad:"'\t'+str(instituto[2]))
+        print("\t DNI:"'\t'+str(instituto[3]))
+        print("\t Codigo:"'\t'+str(instituto[0]))
     cod=input("digite el codigo del articulo que desea modificar")
     for intituto in cursor:
         if int(instituto[0])==int(cod):
@@ -161,12 +161,12 @@ def iliminar():
     cursor.execute("select*from instituto ")
     for instituto in cursor:
         print("")
-        print("\t alumnos agregados")
+        print("\t Alumnos Agregados")
         print("\t------------------------")
-        print("\t nombre:"'\t'+str(instituto[1]))
-        print("\t edad:"'\t'+str(instituto[2]))
-        print("\t dni:"'\t'+str(instituto[3]))
-        print("\t codigo:"'\t'+str(instituto[0]))
+        print("\t Nombre:"'\t'+str(instituto[1]))
+        print("\t Edad:"'\t'+str(instituto[2]))
+        print("\t DNI:"'\t'+str(instituto[3]))
+        print("\t Codigo:"'\t'+str(instituto[0]))
     cod=input("digite el codigo  que desea iliminar")
     sql="delete from instituto where codigo="+cod
     cursor.execute(sql)
