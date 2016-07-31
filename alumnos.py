@@ -4,7 +4,7 @@ import sqlite3
 
 def verificar(a):
     for c in a:
-        if(ord(c)<65 or ord(c)>90 ) and (ord(c)<97 or ord(c)>122) and (ord(c)!=32):
+        if((ord(c)<65 or ord(c)>90 ) and (ord(c)<97 or ord(c)>122) and (ord(c)!=32)):
             return False
     return True
 
