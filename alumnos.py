@@ -58,6 +58,15 @@ def nuevo():
         sexo=F
     elif(data_dni[0:2]=="M"):
         sexo==M
+    correo=input()
+    print("ingrese su especialidad")
+    especialidad=input()
+    while(not verificar(especialidad):
+        especialidad=input("ingrese su especialidad corretamente: ")
+    print("ingrese sus observaciones")
+    observaciones=input()
+    while(not verificar(observaciones):
+        observaciones=input("ingrese sus observaciones correctamente: ")
 
     con=sqlite3.connect("trabajo final.s3db")
     cursor=con.cursor()
