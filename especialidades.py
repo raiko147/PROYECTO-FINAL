@@ -24,6 +24,9 @@ class especialidadesisur:
     def opcionesAdministrativos():
         opcionesTarea = ["Inscripciones", "Reporte Administrativos", "Modificar Datos", "Eliminar Registro"]
         return opcionesTarea
+    def opcionesMatriculas():
+        opcionesTarea = ["Nueva Matricula", "Reporte Matricula", "Modificar Matricula", "Eliminar Matricula"]
+        return opcionesTarea
 
 
 
