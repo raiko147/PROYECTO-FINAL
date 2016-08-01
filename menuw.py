@@ -287,10 +287,6 @@ def menuAlumno():
                     print("Ingrese una opcion")
 
             print()
-#<<<<<<< HEAD
-#=======
-
-#>>>>>>> 28817fd169bd02fb284be75f922863c7aaffb4b5
             os.system("clear")
 def menuDocentes():
             print("\tMenu Docente")
@@ -406,6 +402,7 @@ def menuAdministrativos():
 def menuMatriculas():
             print("\tMenu Matriculas")
             opcion, j, opcionElegido, menuMatriculas = " ", 1, "", especialidadesisur.opcionesMatriculas()
+
             for i in menuMatriculas:
                 opcion += str(j)
                 j +=1
@@ -493,6 +490,7 @@ def menuPrincipal():
 
         elif t == "3":
             print("\tPersonal administrativo")
+            menuAdministrativo()
 
         #eliminar datos
         elif t == "4":
