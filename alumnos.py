@@ -70,7 +70,7 @@ def nuevo():
 
     con=sqlite3.connect("trabajo final.s3db")
     cursor=con.cursor()
-    cursor.execute("insert into instituto (nombre,edad,dni) values ('"+nombre+"','"+edad+"','"+str(dni)+"')")
+    cursor.execute("insert into instituto (nombre,edad,dni) values ('"+nombre+"','"+str(edad)+"','"+str(dni)+"')")
     con.commit()
     con.close()
     time.sleep(3)
@@ -146,7 +146,7 @@ def modificar():
     nombre= input("Digite nuevo nombre o corrija" )
     edad=input("Digite nueva edad o corrija")
     dni= input("Digite nuevo dni o corrija" )
-    sql = "UPDATE instituto set nombre ='"+nombre+"', edad='"+edad+"',dni='"+dni+"' where codigo = "+cod
+    sql = "UPDATE instituto set nombre ='"+nombre+"', edad='"+str(edad)+"',dni='"+str(dni)+"' where codigo = "+cod
     cursor.execute(sql)
 
     con.commit()
