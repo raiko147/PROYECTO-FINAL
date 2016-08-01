@@ -69,6 +69,23 @@ def ingresoNumerico(denominacion,limite):
         if not (len(str(numero)) == limite and j == limite):
             print('\tIngrese correctamente aceptable {} dijitos'.format(limite))
     return numero
+def ingresoNumericoVariable(denominacion):
+    numero,j = 0,0
+    denominacion = denominacion.title()
+    while not (len(str(numero)) == j):
+        j = 0
+        numero = input('Ingrese {}: \t'.format(denominacion))
+        if len(numero) > 0:
+            if numero[0] == '0':
+                print('\tNo puede con cero {}'.format(denominacion))
+                j-=1
+        for i in numero:
+            if i.isdigit():
+                j += 1
+                #print('j+1')
+        if not (len(str(numero)) == j):
+            print('\tIngrese correctamente aceptable {} dijitos'.format(limite))
+    return numero
 
 def ingresoCorreo(denominacion, limitemayor, limiteinferior):
     correo, j,k,m ="",0,0,0
@@ -458,6 +475,73 @@ def menuMatriculas():
 
             print()
             os.system("clear")
+def menuPagos():
+            print("\tMenu Pagos")
+            opcion, j, opcionElegido, menuPago = " ", 1, "", especialidadesisur.opcionesPagos()
+
+            for i in menuPago:
+                opcion += str(j)
+                j +=1
+            opcion += str(j)
+            while not (opcionElegido == opcion[-1]):#error string index out of range -- por que [-1] es la ultimacifra
+                j = 1
+                for i in menuPago:
+                    print("{0}.-{1}".format((j), i))
+                    j += 1
+                print("{}.-Salir de menu Pagos".format(j))
+
+                opcionElegido = input("\tIngrese una opcion >> ".format(j))
+                if opcionElegido == "1":
+                    concepto = ingresoAlfanumerico("Concepto de pago",60,2)
+                    cantidad = ingresoNumericoVariable("Cantidad de")
+                    s = ""
+                    while not (s=="1" or s == "2" or s.lower() == "c"):
+                        s = input("Generar recibo para:\n1.-Docente\n2.-Administrativo\ningrese una opcion >>")
+                        if s == "1":
+                            codigo_benificiado = tablaCodigo("docentes","codigo"," Docente(s)")
+                        elif s == "2":
+                            codigo_benificiado = tablaCodigo("administrativos","codigo", " Administrativos")
+                        elif not (s=="1" or s == "2" or s.lower() == "c"):
+                            print("Ingrese una opcion")
+                    print()
+                    if codigo_benificiado :
+                        print(end="\tguardando... ")
+                        cursor.execute("insert into pagos(concepto, cantidad, codigo_nombre"
+                                       "values(\"{0}\",\"{1}\",\"{2}\",\"{3}\")"
+                                       "".format(concepto,cantidad, codigo_benificiado))
+                        con.commit()
+                        print("ok")
+                #reporte
+                elif opcionElegido == "2":
+                    lista = ["Codigo de Recibo", "Concepto", "Cantidad", "Emitido (codigo)"]
+                    reporte("pagos","codigo_recibo",lista)
+                #modificar datos
+
+                elif opcionElegido == "3":
+                    print("\tModificacion de datos")
+                    modificar("codigo_recibo","codigo_recibo")
+                #eliminar datos
+                elif opcionElegido == "4":
+                    print("\tEliminar registro")
+                    codigo = tablaCodigo("pagos","codigo_recibo"," Recibo(s)")
+                    codigo = codigo[-1]
+                    s = ""
+                    while not (s=="si" or s=="no" or s=="s" or s=="n" or codigo ==None ):
+                        s = input("Esta seguro que desea eliminar el codigo {} si/no: ".format(codigo)).lower()
+                        if s == "si" or s=="s" :
+                            print(end="\teliminando... ")
+                            cursor.execute("delete from pagos where codigo_recibo =\'{}\'".format(codigo))
+                            con.commit()
+                            print("ok")
+                        elif s =="no" or s=="n" :
+                            print("\tcancelado")
+                        if not (s=="si" or s=="no"or s=="s" or s=="n"):
+                            print("\tconfirme correctamente")
+                if not (opcionElegido == opcion[-1]):
+                    print("Ingrese una opcion")
+
+            print()
+            os.system("clear")
 
 def menuPrincipal():
     opciones = especialidadesisur.opcionesmenuprincipal()
@@ -499,7 +583,7 @@ def menuPrincipal():
 
         #pagos
         elif t == "5" :
-            print("pagos")
+            menuPagos()
         print()
         s = input("Desea continuar en el programa principal? si/no:").lower()
         if not ((s == k[-1] and len(s)==1) or s == "si" or s=="no" or s=="s" or s=="n"):

@@ -27,6 +27,8 @@ class especialidadesisur:
     def opcionesMatriculas():
         opcionesTarea = ["Nueva Matricula", "Reporte Matricula", "Modificar Matricula", "Eliminar Matricula"]
         return opcionesTarea
-
+    def opcionesPagos():
+        opcionesTarea = ["Nuevo Recibo", "Reporte Recibo", "Modificar Recibo", "Eliminar Recibo"]
+        return opcionesTarea
 
 
