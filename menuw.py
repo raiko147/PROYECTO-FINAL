@@ -399,6 +399,60 @@ def menuAdministrativos():
 
             print()
             os.system("clear")
+def menuMatriculas():
+            print("\tMenu Matriculas")
+            opcion, j, opcionElegido, menuMatriculas = " ", 1, "", especialidadesisur.opcionesAlumnos()
+            for i in menumatriculas:
+                opcion += str(j)
+                j +=1
+            opcion += str(j)
+            while not (opcionElegido == opcion[-1]):#error string index out of range -- por que [-1] es la ultimacifra
+                j = 1
+                for i in menuMatriculas:
+                    print("{0}.-{1}".format((j), i))
+                    j += 1
+                print("{}.-Salir de menu Matriculas".format(j))
+
+                opcionElegido = input("\tIngrese una opcion >> ".format(j))
+                if opcionElegido == "1":
+                    datos = inscripcionNueva()
+                    if datos :
+                        print(end="\tguardando... ")
+                        cursor.execute("insert into matriculas( ciclo ,semestre_academico , codigo_alumno) "
+                                       "values(\"{0}\",\"{1}\",\"{2}\")"
+                                       "".format(datos[0],datos[1],datos[2]))
+                        con.commit()
+                        print("ok")
+                #reporte estudiantes
+                elif opcionElegido == "2":
+                    reporte("matriculas","codigo")
+                #modificar datos
+
+                elif opcionElegido == "3":
+                    print("\tModificacion de datos")
+                    modificar("codigo_matricula","codigo")
+                #eliminar datos
+                elif opcionElegido == "4":
+                    print("\tEliminar registro")
+                    codigo = tablaCodigo("codigo_matricula","codigo")
+                    codigo = codigo[-1]
+                    s = ""
+                    while not (s=="si" or s=="no" or s=="s" or s=="n" or codigo ==None ):
+                        s = input("Esta seguro que desea eliminar el codigo {} si/no: ".format(codigo)).lower()
+                        if s == "si" or s=="s" :
+                            print(end="\teliminando... ")
+                            cursor.execute("delete from matriculas where id =\'{}\'".format(codigo))
+                            con.commit()
+                            print("ok")
+                        elif s =="no" or s=="n" :
+                            print("\tcancelado")
+                        if not (s=="si" or s=="no"or s=="s" or s=="n"):
+                            print("\tconfirme correctamente")
+                if not (opcionElegido == opcion[-1]):
+                    print("Ingrese una opcion")
+
+            print()
+            os.system("clear")
 
 def menuPrincipal():
     opciones = especialidadesisur.opcionesmenuprincipal()
