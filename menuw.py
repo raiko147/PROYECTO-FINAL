@@ -402,7 +402,7 @@ def menuAdministrativos():
 def menuMatriculas():
             print("\tMenu Matriculas")
             opcion, j, opcionElegido, menuMatriculas = " ", 1, "", especialidadesisur.opcionesAlumnos()
-            for i in menumatriculas:
+            for i in menuMatriculas:
                 opcion += str(j)
                 j +=1
             opcion += str(j)
@@ -485,10 +485,12 @@ def menuPrincipal():
 
         elif t == "3":
             print("\tPersonal administrativo")
+            menuAdministrativo()
 
         #eliminar datos
         elif t == "4":
             print("\tmatriculas")
+            menuMatriculas()
 
         #pagos
         elif t == "5" :
