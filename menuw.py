@@ -148,14 +148,14 @@ def inscripcionNueva():
     else:
         print('Los datos ingresados no se registraron')
         return None
-def tablaCodigo(nombretabla,nombre_columna):
+def tablaCodigo(nombretabla,nombre_columna,categoria):
     cursor.execute("select {0} from {1}".format(nombre_columna, nombretabla))
     id = []
     for i in cursor:
         id.append(i[0])
     s = ""
-    print("\tCodigos registrados {}".format(id))
-    print("\tCantidad Registrados: {}".format(len(id)))
+    print("\tCodigos registrados {0} ".format(id))
+    print("\tCantidad Registrados: {0} {1}".format(len(id),categoria))
     while not ( s in id or len(id) == 0):
         while True:
             try:
@@ -170,7 +170,7 @@ def tablaCodigo(nombretabla,nombre_columna):
     cota = [nombretabla,s]
     return cota
 
-def reporte(nombretabla,nombreColumna_de_codigo):
+def reporte(nombretabla,nombreColumna_de_codigo,lista_reporte):
     cursor.execute("select {0} from {1}".format(nombreColumna_de_codigo,nombretabla))
     id = []
     for i in cursor:
@@ -188,10 +188,10 @@ def reporte(nombretabla,nombreColumna_de_codigo):
             elif t =="2":
                 print()
                 #ingreso de codigo
-                codigo = tablaCodigo(nombretabla, nombreColumna_de_codigo)
+                codigo = tablaCodigo(nombretabla, nombreColumna_de_codigo," ")
                 cursor.execute("select * from {0} where {2} in ({1})".format(codigo[0],codigo[1],nombreColumna_de_codigo))
                 codigo = "" #deshace el codigo para el nuevo reporte
-            x,datos =0, ["Codigo","Nombres","Apellidos","Edad","DNI","Direccion", "Sexo", "Correo","Especialidad","Observaciones"]
+            x,datos =0, lista_reporte
             #imprime el reporte depende de la opcion
             print()
             for i in cursor:
@@ -219,7 +219,7 @@ def modificar(nombretabla, columna_codigo):
         print("Menu Modificacion datos")
         s = input("1.-Modificar segun al codigo\n2.-Consultar datos\n3.-Cancelar\nIngrese una opcion >>")
         if s == "1":
-            codigo = tablaCodigo(nombretabla, columna_codigo)
+            codigo = tablaCodigo(nombretabla, columna_codigo," ")
             codigo = codigo[1]
             dat = inscripcionNueva()
             print(end="\tActualizando...")
@@ -229,7 +229,8 @@ def modificar(nombretabla, columna_codigo):
             con.commit()
             print("ok\n")
         elif s == "2":
-            reporte(nombretabla,columna_codigo)
+            lista = ["Codigo","Nombres","Apellidos","Edad","DNI","Direccion", "Sexo", "Correo","Especialidad","Observaciones"]
+            reporte(nombretabla,columna_codigo,lista)
         if not (s in '123' and len(s)==1 ):
             print("\tIngrese opcion correcta")
 def menuAlumno():
@@ -258,7 +259,8 @@ def menuAlumno():
                         print("ok")
                 #reporte estudiantes
                 elif opcionElegido == "2":
-                    reporte("registro","id")
+                    lista = ["Codigo","Nombres","Apellidos","Edad","DNI","Direccion", "Sexo", "Correo","Especialidad","Observaciones"]
+                    reporte("registro","id",lista)
                 #modificar datos
 
                 elif opcionElegido == "3":
@@ -267,7 +269,7 @@ def menuAlumno():
                 #eliminar datos
                 elif opcionElegido == "4":
                     print("\tEliminar registro")
-                    codigo = tablaCodigo("registro","id")
+                    codigo = tablaCodigo("registro","id"," Estudiante(s)")
                     codigo = codigo[-1]
                     s = ""
                     while not (s=="si" or s=="no" or s=="s" or s=="n" or codigo ==None ):
@@ -316,7 +318,8 @@ def menuDocentes():
                         print("ok")
                 #reporte estudiantes
                 elif opcionElegido == "2":
-                    reporte("docentes","codigo")
+                    lista = ["Codigo","Nombres","Apellidos","Edad","DNI","Direccion", "Sexo", "Correo","Especialidad","Observaciones"]
+                    reporte("docentes","codigo",lista)
                 #modificar datos
 
                 elif opcionElegido == "3":
@@ -325,7 +328,7 @@ def menuDocentes():
                 #eliminar datos
                 elif opcionElegido == "4":
                     print("\tEliminar registro")
-                    codigo = tablaCodigo("docentes","codigo")
+                    codigo = tablaCodigo("docentes","codigo"," Docente(s)")
                     codigo = codigo[1]
                     s = ""
                     while not (s=="si" or s=="no" or s=="s" or s=="n" or codigo ==None ):
@@ -371,7 +374,8 @@ def menuAdministrativos():
                         print("ok")
                 #reporte estudiantes
                 elif opcionElegido == "2":
-                    reporte("administrativos","codigo")
+                    lista = ["Codigo","Nombres","Apellidos","Edad","DNI","Direccion", "Sexo", "Correo","Especialidad","Observaciones"]
+                    reporte("administrativos","codigo", lista)
                 #modificar datos
 
                 elif opcionElegido == "3":
@@ -380,7 +384,7 @@ def menuAdministrativos():
                 #eliminar datos
                 elif opcionElegido == "4":
                     print("\tEliminar registro")
-                    codigo = tablaCodigo("administrativo","codigo")
+                    codigo = tablaCodigo("administrativo","codigo"," Administrativo(s)")
                     codigo = codigo[-1]
                     s = ""
                     while not (s=="si" or s=="no" or s=="s" or s=="n" or codigo ==None ):
@@ -401,8 +405,8 @@ def menuAdministrativos():
             os.system("clear")
 def menuMatriculas():
             print("\tMenu Matriculas")
-            opcion, j, opcionElegido, menuMatriculas = " ", 1, "", especialidadesisur.opcionesAlumnos()
-            for i in menumatriculas:
+            opcion, j, opcionElegido, menuMatriculas = " ", 1, "", especialidadesisur.opcionesMatriculas()
+            for i in menuMatriculas:
                 opcion += str(j)
                 j +=1
             opcion += str(j)
@@ -415,17 +419,21 @@ def menuMatriculas():
 
                 opcionElegido = input("\tIngrese una opcion >> ".format(j))
                 if opcionElegido == "1":
-                    datos = inscripcionNueva()
-                    if datos :
+                    ciclo = ingresoAlfanumerico("ciclo de matricula (año ciclo=A,B)",8,2)
+                    semestre = ingresoAlfanumerico("semestre (I,II)",2,1)
+                    codigo_alumno = tablaCodigo("registro","id"," Estudiante(s)")
+                    print()
+                    if codigo_alumno :
                         print(end="\tguardando... ")
                         cursor.execute("insert into matriculas( ciclo ,semestre_academico , codigo_alumno) "
                                        "values(\"{0}\",\"{1}\",\"{2}\")"
-                                       "".format(datos[0],datos[1],datos[2]))
+                                       "".format(ciclo,semestre, codigo_alumno[1]))
                         con.commit()
                         print("ok")
                 #reporte estudiantes
                 elif opcionElegido == "2":
-                    reporte("matriculas","codigo")
+                    lista = ["Codigo Matricula","Ciclo", "Semestre Academico", "Codigo Alumno"]
+                    reporte("matriculas","codigo", lista)
                 #modificar datos
 
                 elif opcionElegido == "3":
@@ -434,7 +442,7 @@ def menuMatriculas():
                 #eliminar datos
                 elif opcionElegido == "4":
                     print("\tEliminar registro")
-                    codigo = tablaCodigo("codigo_matricula","codigo")
+                    codigo = tablaCodigo("codigo_matricula","codigo"," Matriculas")
                     codigo = codigo[-1]
                     s = ""
                     while not (s=="si" or s=="no" or s=="s" or s=="n" or codigo ==None ):
@@ -489,6 +497,7 @@ def menuPrincipal():
         #eliminar datos
         elif t == "4":
             print("\tmatriculas")
+            menuMatriculas()
 
         #pagos
         elif t == "5" :
