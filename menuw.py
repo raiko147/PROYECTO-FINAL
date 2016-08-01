@@ -3,6 +3,7 @@
 
 from modulow import *
 from especialidades import *
+from logoISUR import logo
 import time
 import sys
 import os
@@ -597,6 +598,9 @@ print (end="\tINSTITUTO DEL SUR AREQUIPA\nConectando base datos...")
 con=sqlite3.connect("trabajo-final.db")
 print("OK")
 time.sleep(1)
+os.system("clear")
+logo()
+time.sleep(2)
 os.system("clear")
 cursor=con.cursor()
 menuPrincipal()
