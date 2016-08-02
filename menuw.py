@@ -207,7 +207,8 @@ def reporte(nombretabla,nombreColumna_de_codigo,lista_reporte):
                 print()
                 #ingreso de codigo
                 codigo = tablaCodigo(nombretabla, nombreColumna_de_codigo," ")
-                cursor.execute("select * from {0} where {2} in ({1})".format(codigo[0],codigo[1],nombreColumna_de_codigo))
+                if codigo :
+                    cursor.execute("select * from {0} where {2} in ({1})".format(codigo[0],codigo[1],nombreColumna_de_codigo))
                 codigo = "" #deshace el codigo para el nuevo reporte
             x,datos =0, lista_reporte
             #imprime el reporte depende de la opcion
