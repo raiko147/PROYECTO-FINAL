@@ -211,7 +211,7 @@ def reporte(nombretabla,nombreColumna_de_codigo,lista_reporte):
                     cursor.execute("select * from {0} where {2} in ({1})".format(codigo[0],codigo[1],nombreColumna_de_codigo))
                 codigo = "" #deshace el codigo para el nuevo reporte
             elif t == "3":
-                if nombretabla == "nombre" :
+                if nombretabla == "registro" :
                     nombre = ingresoAlfabetico("Nombre a buscar",20)
                     nombre =  "%" + nombre +"%"
                     cursor.execute("select * from {2} where {1} LIKE '{0}'".format( nombre, "nombre",nombretabla))
