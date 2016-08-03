@@ -8,6 +8,7 @@ print("OK")
 time.sleep(1)
 os.system("clear")
 cursor=con.cursor()
+#creacion de tabla para registro de alumnos
 cursor.execute("CREATE TABLE registro(id integer primary key,nombre var(20) not null,"
                "apellidos var(20) not null,edad int(2) not null,dni int(8) not null,direccion var(30) not null,"
                "sexo var(1) not null,correo var(32) not null,especialidad var(60) not null,observaciones var(60));")

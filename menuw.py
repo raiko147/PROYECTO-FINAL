@@ -13,7 +13,7 @@ def ingresoAlfabetico(denominacion,limite): #funcion de ingreso alfabetico denom
     nombre , j, k= '', 0, 0
     denominacion = denominacion.title()
     while not ( len(nombre) == j and k <= limite and j > 0 ):
-        k, nombre = 0 , str(input('Ingrese {} Completos: \n'.format(denominacion)))
+        k, nombre = 0 , str(input('Ingrese {} (Completos): \n'.format(denominacion)))
         nombre = nombre.title()
         for i in nombre:
             k+=1
@@ -198,7 +198,7 @@ def reporte(nombretabla,nombreColumna_de_codigo,lista_reporte):
         t = ''
         while not (t =="3") :
             print("\n\tMENU REPORTE")
-            t = input("1.-Reporte completo\n2.-Reporte por codigo\n3.-Salir\n\nIngrese una opcion >")
+            t = input("1.-Reporte completo\n2.-Reporte por codigo\n3.-Reporte por Nombre\n4.-Salir\n\nIngrese una opcion >")
 
             if t =="1":
                 print()
@@ -210,6 +210,15 @@ def reporte(nombretabla,nombreColumna_de_codigo,lista_reporte):
                 if codigo :
                     cursor.execute("select * from {0} where {2} in ({1})".format(codigo[0],codigo[1],nombreColumna_de_codigo))
                 codigo = "" #deshace el codigo para el nuevo reporte
+            elif t == "3":
+                if nombretabla == "nombre" :
+                    nombre = ingresoAlfabetico("Nombre a buscar",20)
+                    nombre =  "%" + nombre +"%"
+                    cursor.execute("select * from {2} where {1} LIKE '{0}'".format( nombre, "nombre",nombretabla))
+                    for i in cursor:
+                        print(i)
+                else :
+                    print("Lo sentimos todavia no esta disponible para este menu")
             x,datos =0, lista_reporte
             #imprime el reporte depende de la opcion
             print()
@@ -223,7 +232,7 @@ def reporte(nombretabla,nombreColumna_de_codigo,lista_reporte):
             time.sleep(2)
             os.system("clear")
             #opcion salida
-            if (t =="3"):
+            if (t =="4"):
                 break
             else: #cuando la opcion es incorrecta
                 print("Ingrese opcion de reporte")
@@ -253,7 +262,7 @@ def modificar(nombretabla, columna_codigo):
         if not (s in '123' and len(s)==1 ):
             print("\tIngrese opcion correcta")
 def menuAlumno():
-            print("\tMenu Alumno")
+
             opcion, j, opcionElegido, menuAlumno = " ", 1,"", especialidadesisur.opcionesAlumnos()
             for i in menuAlumno:
                 opcion += str(j)
@@ -261,6 +270,7 @@ def menuAlumno():
             opcion += str(j)
             while not (opcionElegido == opcion[-1]):#error string index out of range -- por que [-1] es la ultimacifra
                 j = 1
+                print("\tMenu Alumno")
                 for i in menuAlumno:
                     print("{0}.-{1}".format((j), i))
                     j += 1
