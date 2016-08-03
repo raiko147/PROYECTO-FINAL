@@ -24,7 +24,7 @@ cursor.execute("CREATE TABLE matriculas(codigo integer primary key, ciclo int(20
 con.commit()
 #creacion de tabla pagos
 cursor.execute("CREATE TABLE pagos(codigo_recibo integer primary key, concepto var(60) not null,"
-                "cantidad int(1) not null, codigo_nombre var(20) );")
+                "cantidad int(10000) not null, codigo_nombre var(20) );")
 
 con.commit()
 #creacion de tabla docentes

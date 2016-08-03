@@ -506,7 +506,7 @@ def menuPagos():
                 opcionElegido = input("\tIngrese una opcion >> ".format(j))
                 if opcionElegido == "1":
                     concepto = ingresoAlfanumerico("Concepto de pago",60,2)
-                    cantidad = ingresoNumericoVariable("Cantidad de")
+                    cantidad = ingresoNumericoVariable("Cantidad de pago(s)")
                     s = ""
                     while not (s=="1" or s == "2" or s.lower() == "c"):
                         s = input("Generar recibo para:\n1.-Docente\n2.-Administrativo\ningrese una opcion >>")
@@ -516,12 +516,11 @@ def menuPagos():
                             codigo_benificiado = tablaCodigo("administrativos","codigo", " Administrativos")
                         elif not (s=="1" or s == "2" or s.lower() == "c"):
                             print("Ingrese una opcion")
-                    print()
+                    print(codigo_benificiado)
                     if codigo_benificiado :
                         print(end="\tguardando... ")
-                        cursor.execute("insert into pagos(concepto, cantidad, codigo_nombre"
-                                       "values(\"{0}\",\"{1}\",\"{2}\",\"{3}\")"
-                                       "".format(concepto,cantidad, codigo_benificiado))
+                        cursor.execute("insert into pagos(concepto, cantidad, codigo_nombre)"
+                                       " values(\"{0}\",\"{1}\",\"{2}\")".format(concepto,cantidad, codigo_benificiado[1]))
                         con.commit()
                         print("ok")
                 #reporte
@@ -587,7 +586,7 @@ def menuPrincipal():
 
         elif t == "3":
             print("\tPersonal administrativo")
-            menuAdministrativo()
+            menuAdministrativos()
 
         #eliminar datos
         elif t == "4":
