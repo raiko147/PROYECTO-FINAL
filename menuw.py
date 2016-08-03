@@ -211,7 +211,7 @@ def reporte(nombretabla,nombreColumna_de_codigo,lista_reporte):
                     cursor.execute("select * from {0} where {2} in ({1})".format(codigo[0],codigo[1],nombreColumna_de_codigo))
                 codigo = "" #deshace el codigo para el nuevo reporte
             elif t == "3":
-                if nombretabla == "registro" :
+                if nombretabla == "registro" or nombretabla == "docentes":
                     nombre = ingresoAlfabetico("Nombre a buscar",20)
                     nombre =  "%" + nombre +"%"
                     cursor.execute("select * from {2} where {1} LIKE '{0}'".format( nombre, "nombre",nombretabla))
@@ -318,7 +318,6 @@ def menuAlumno():
             print()
             os.system("clear")
 def menuDocentes():
-            print("\tMenu Docente")
             opcion, j, opcionElegido, menuAlumno = "", 1," ", especialidadesisur.opcionesDocentes()
             for i in menuAlumno:
                 opcion += str(j)
@@ -327,6 +326,7 @@ def menuDocentes():
             opcion += str(j)
             while not (opcionElegido == opcion[-1]):
                 j = 1
+                print("\tMenu Docente")
                 for i in menuAlumno:
                     print("{0}.-{1}".format((j), i))
                     j += 1
@@ -374,7 +374,6 @@ def menuDocentes():
             os.system("clear")
 
 def menuAdministrativos():
-            print("\tMenu Administrativos")
             opcion, j, opcionElegido, menuAlumno = " ", 1,"", especialidadesisur.opcionesAdministrativos()
             for i in menuAlumno:
                 opcion += str(j)
@@ -382,6 +381,7 @@ def menuAdministrativos():
             opcion += str(j)
             while not (opcionElegido == opcion[-1]):#error string index out of range -- por que [-1] es la ultimacifra
                 j = 1
+                print("\tMenu Administrativos")
                 for i in menuAlumno:
                     print("{0}.-{1}".format((j), i))
                     j += 1
@@ -429,7 +429,6 @@ def menuAdministrativos():
             print()
             os.system("clear")
 def menuMatriculas():
-            print("\tMenu Matriculas")
             opcion, j, opcionElegido, menuMatriculas = " ", 1, "", especialidadesisur.opcionesMatriculas()
 
             for i in menuMatriculas:
@@ -438,6 +437,7 @@ def menuMatriculas():
             opcion += str(j)
             while not (opcionElegido == opcion[-1]):#error string index out of range -- por que [-1] es la ultimacifra
                 j = 1
+                print("\tMenu Matriculas")
                 for i in menuMatriculas:
                     print("{0}.-{1}".format((j), i))
                     j += 1
@@ -488,7 +488,6 @@ def menuMatriculas():
             print()
             os.system("clear")
 def menuPagos():
-            print("\tMenu Pagos")
             opcion, j, opcionElegido, menuPago = " ", 1, "", especialidadesisur.opcionesPagos()
 
             for i in menuPago:
@@ -497,6 +496,7 @@ def menuPagos():
             opcion += str(j)
             while not (opcionElegido == opcion[-1]):#error string index out of range -- por que [-1] es la ultimacifra
                 j = 1
+                print("\tMenu Pagos")
                 for i in menuPago:
                     print("{0}.-{1}".format((j), i))
                     j += 1
