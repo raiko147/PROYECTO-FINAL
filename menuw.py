@@ -578,7 +578,7 @@ def menuPrincipal():
         #nueva inscripcion
         if t == "1":
             menuAlumno()
-        #reporte estudiantes
+        #reporte 
         elif t == "2":
             print("docentes")
             menuDocentes()
