@@ -132,8 +132,9 @@ def inscripcionNueva():
         correo = ingresoCorreo("correo",32,5)
 
         #Ingreso la especilidad que estudiara
+
         especialidad = especialidadesisur.carreras()
-        print('\tEspecialidad que estudia : ')
+        print('\tEspecialidad : ')
         j, opcion = 1, ''
         respuesta = ''
         while not ((respuesta in opcion) and len(respuesta)>0 and len(especialidad)<= j):
@@ -578,7 +579,7 @@ def menuPrincipal():
         #nueva inscripcion
         if t == "1":
             menuAlumno()
-        #reporte 
+        #reporte
         elif t == "2":
             print("docentes")
             menuDocentes()
